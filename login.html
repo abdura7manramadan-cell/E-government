@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Government Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #123b5d, #1976a5);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            width: 360px;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #123b5d;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #123b5d;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1976a5;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #123b5d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <select onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="ku">کوردی</option>
+        </select>
+
+        <h2 id="title">E-Government</h2>
+
+        <p id="subtitle">Login to your account</p>
+
+        <form onsubmit="login(event)">
+
+            <input type="text" id="username"
+                placeholder="Username" required>
+
+            <input type="password" id="password"
+                placeholder="Password" required>
+
+            <button type="submit" id="loginButton">
+                Login
+            </button>
+
+        </form>
+
+        <a href="index.html" id="home">
+            Back to Home
+        </a>
+
+    </div>
+
+    <script>
+
+        const languages = {
+
+            en: {
+                dir: "ltr",
+                title: "E-Government",
+                subtitle: "Login to your account",
+                username: "Username",
+                password: "Password",
+                loginButton: "Login",
+                home: "Back to Home",
+                message: "This is a demo login page"
+            },
+
+            ar: {
+                dir: "rtl",
+                title: "الحكومة الإلكترونية",
+                subtitle: "سجل الدخول إلى حسابك",
+                username: "اسم المستخدم",
+                password: "كلمة المرور",
+                loginButton: "تسجيل الدخول",
+                home: "العودة إلى الصفحة الرئيسية",
+                message: "هذه صفحة تسجيل دخول تجريبية"
+            },
+
+            ku: {
+                dir: "rtl",
+                title: "حکومەتی ئەلیکترۆنی",
+                subtitle: "بچۆ ژوورەوە بۆ هەژمارەکەت",
+                username: "ناوی بەکارهێنەر",
+                password: "وشەی نهێنی",
+                loginButton: "چوونەژوورەوە",
+                home: "گەڕانەوە بۆ پەڕەی سەرەکی",
+                message: "ئەمە پەڕەیەکی تاقیکارییە بۆ چوونەژوورەوە"
+            }
+
+        };
+
+        let currentLanguage = "en";
+
+        function changeLanguage(language) {
+
+            currentLanguage = language;
+
+            const words = languages[language];
+
+            document.documentElement.lang = language;
+            document.documentElement.dir = words.dir;
+
+            document.getElementById("title").innerText = words.title;
+            document.getElementById("subtitle").innerText = words.subtitle;
+            document.getElementById("username").placeholder = words.username;
+            document.getElementById("password").placeholder = words.password;
+            document.getElementById("loginButton").innerText = words.loginButton;
+            document.getElementById("home").innerText = words.home;
+
+        }
+
+        function login(event) {
+
+            event.preventDefault();
+
+            alert(languages[currentLanguage].message);
+
+        }
+
+    </script>
+
+</body>
+</html>

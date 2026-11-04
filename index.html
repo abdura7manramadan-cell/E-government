@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة حكومة إقليم كوردستان</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .developer-credit {
+            text-align: center;
+            margin-bottom: 28px;
+            padding: 12px 15px;
+        }
+
+        .developer-credit .developer-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #d8b66a;
+            margin-bottom: 7px;
+        }
+
+        .developer-credit .developer-name {
+            font-size: 21px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 0.4px;
+            margin: 0;
+            direction: ltr;
+        }
+
+        @media (max-width: 600px) {
+            .developer-credit .developer-name {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <span>🏛️</span>
+            <span data-i18n="siteName">بوابة حكومة إقليم كوردستان</span>
+        </a>
+
+        <button class="menu-toggle" type="button">☰</button>
+
+        <nav class="navbar">
+            <a href="index.html" data-i18n="home">الرئيسية</a>
+            <a href="pages/services.html" data-i18n="services">الخدمات الإلكترونية</a>
+            <a href="pages/ministers.html" data-i18n="ministries">الوزارات والمؤسسات</a>
+            <a href="pages/about.html" data-i18n="about">عن البوابة</a>
+            <a href="login.html" data-i18n="login">تسجيل الدخول</a>
+
+            <select class="language-select">
+                <option value="ar">العربية</option>
+                <option value="ku">کوردی</option>
+                <option value="en">English</option>
+            </select>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-content">
+
+        <!-- Developer Credit -->
+        <div class="developer-credit">
+            <p class="developer-label" id="developerLabel">
+                تصميم وتطوير بواسطة
+            </p>
+
+            <p class="developer-name">
+                Abdurahman Ramadan Nasrulla
+            </p>
+        </div>
+
+        <h1 data-i18n="welcome">مرحباً بكم في البوابة الإلكترونية</h1>
+
+        <p data-i18n="description">
+            حكومة إقليم كوردستان - بوابتك للوصول إلى المؤسسات والخدمات الحكومية
+        </p>
+
+        <div class="hero-actions">
+            <a href="pages/services.html" class="btn btn-primary" data-i18n="explore">
+                استكشف الخدمات
+            </a>
+
+            <a href="pages/about.html" class="btn btn-dark" data-i18n="about">
+                عن البوابة
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2 class="section-title" data-i18n="servicesTitle">
+            الخدمات الحكومية
+        </h2>
+
+        <div class="section-line"></div>
+
+        <div class="search-box">
+            <input
+                type="search"
+                placeholder="ابحث عن خدمة أو مؤسسة..."
+                data-i18n-placeholder="search"
+                data-search-input
+                data-search-target=".service-card">
+        </div>
+
+        <div class="cards-grid">
+
+            <article class="card service-card">
+                <div class="card-icon">📄</div>
+                <h3 data-i18n="documents">الوثائق الرسمية</h3>
+                <p>معلومات عن الخدمات المتعلقة بالوثائق والمعاملات الرسمية.</p>
+                <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
+            </article>
+
+            <article class="card service-card">
+                <div class="card-icon">🚦</div>
+                <h3 data-i18n="traffic">خدمات المرور</h3>
+                <p>معلومات عن خدمات المرور والمركبات.</p>
+                <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
+            </article>
+
+            <article class="card service-card">
+                <div class="card-icon">👥</div>
+                <h3 data-i18n="citizens">خدمات المواطنين</h3>
+                <p>الوصول إلى معلومات الخدمات المخصصة للمواطنين.</p>
+                <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
+            </article>
+
+            <article class="card service-card">
+                <div class="card-icon">🏛️</div>
+                <h3>المؤسسات الحكومية</h3>
+                <p>استعراض الوزارات والدوائر والهيئات الحكومية.</p>
+                <a href="pages/ministers.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="statistics">
+    <div class="container stats-grid">
+
+        <div class="stat-item">
+            <h2>19</h2>
+            <p>وزارة</p>
+        </div>
+
+        <div class="stat-item">
+            <h2>5</h2>
+            <p>دوائر</p>
+        </div>
+
+        <div class="stat-item">
+            <h2>9</h2>
+            <p>هيئات ومؤسسات أخرى</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-i18n="aboutTitle">عن البوابة</h2>
+        <div class="section-line"></div>
+
+        <p class="about-description" data-i18n="aboutDescription">
+            منصة إلكترونية تهدف إلى تسهيل وصول المواطنين إلى المؤسسات والخدمات الحكومية في إقليم كوردستان.
+        </p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>
+            ©️ <span data-current-year>2026</span>
+            <span data-i18n="footer">جميع الحقوق محفوظة</span>
+        </p>
+
+        <p>نسخة تجريبية لمشروع تعليمي وليست بوابة حكومية رسمية.</p>
+    </div>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+    // Developer credit translations
+    const developerLabels = {
+        ar: "تصميم وتطوير بواسطة",
+        ku: "دیزاین و پەرەپێدانی لەلایەن",
+        en: "Designed & Developed by"
+    };
+
+    function updateDeveloperLabel() {
+        const selector = document.querySelector(".language-select");
+        const label = document.getElementById("developerLabel");
+
+        if (!selector || !label) return;
+
+        const language = selector.value;
+        label.textContent = developerLabels[language] || developerLabels.ar;
+    }
+
+    document.querySelectorAll(".language-select").forEach(function(selector) {
+        selector.addEventListener("change", updateDeveloperLabel);
+    });
+
+    // Apply saved language on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        const savedLanguage = localStorage.getItem("preferredLanguage") || "ar";
+
+        document.querySelectorAll(".language-select").forEach(function(selector) {
+            selector.value = savedLanguage;
+        });
+
+        updateDeveloperLabel();
+    });
+
+    updateDeveloperLabel();
+</script>
+
+</body>
+</html>
