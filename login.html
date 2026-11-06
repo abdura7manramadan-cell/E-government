@@ -86,7 +86,7 @@
 
     <div class="login-box">
 
-        <select onchange="changeLanguage(this.value)">
+        <select id="loginLanguage" aria-label="Language" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="ar">العربية</option>
             <option value="ku">کوردی</option>
@@ -160,6 +160,7 @@
         function changeLanguage(language) {
 
             currentLanguage = language;
+            localStorage.setItem("preferredLanguage", language);
 
             const words = languages[language];
 
@@ -172,6 +173,7 @@
             document.getElementById("password").placeholder = words.password;
             document.getElementById("loginButton").innerText = words.loginButton;
             document.getElementById("home").innerText = words.home;
+            document.getElementById("loginLanguage").value = language;
 
         }
 
@@ -182,6 +184,8 @@
             alert(languages[currentLanguage].message);
 
         }
+
+        changeLanguage(localStorage.getItem("preferredLanguage") || "en");
 
     </script>
 

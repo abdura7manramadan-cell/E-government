@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تعرف على بوابة حكومة إقليم كوردستان التجريبية وخدماتها وطريقة استخدامها.">
+    <title>عن البوابة | بوابة حكومة إقليم كوردستان</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .about-hero { background: linear-gradient(135deg, #10243d, #244b6b); color: white; padding: 76px 0; }
+        .about-hero .container { max-width: 900px; text-align: center; }
+        .about-hero h1 { font-size: clamp(30px, 5vw, 48px); margin: 8px 0 16px; }
+        .about-hero p { color: #e1e7ef; font-size: 17px; max-width: 760px; margin: auto; }
+        .about-kicker { color: #f1d58c; font-weight: 700; }
+        .about-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; align-items: start; }
+        .about-panel { background: white; padding: 30px; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+        .about-panel h2 { color: var(--navy); margin-bottom: 12px; }
+        .about-panel p, .about-panel li { color: var(--muted); }
+        .about-panel ul { padding-inline-start: 22px; margin-top: 12px; }
+        .about-panel li { margin: 8px 0; }
+        .about-links { display: grid; gap: 12px; margin-top: 18px; }
+        .about-links a { color: var(--green); font-weight: 700; }
+        .about-notice { margin-top: 24px; padding: 18px 20px; background: #fff8e7; border-inline-start: 4px solid var(--gold); border-radius: 8px; color: #5d4b20; }
+        .about-steps { margin-top: 36px; }
+        @media (max-width: 760px) { .about-layout { grid-template-columns: 1fr; } .about-hero { padding: 55px 0; } }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container header-container">
+        <a href="../index.html" class="logo"><span>🏛️</span><span data-i18n="siteName">بوابة حكومة إقليم كوردستان</span></a>
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        <nav class="navbar" aria-label="القائمة الرئيسية">
+            <a href="../index.html" data-i18n="home">الرئيسية</a>
+            <a href="services.html" data-i18n="services">الخدمات الإلكترونية</a>
+            <a href="ministers.html" data-i18n="ministries">الوزارات والمؤسسات</a>
+            <a href="about.html" aria-current="page" data-i18n="about">عن البوابة</a>
+            <a href="dashboard.html" data-i18n="dashboard">إدارة المعاملات</a>
+            <select class="language-select" aria-label="اللغة"><option value="ar">العربية</option><option value="ku">کوردی</option><option value="en">English</option></select>
+        </nav>
+    </div>
+</header>
+<main>
+    <section class="about-hero"><div class="container">
+        <span class="about-kicker" data-i18n="aboutKicker">معلومات واضحة، وخدمات أقرب إليك</span>
+        <h1 data-i18n="aboutPageTitle">عن البوابة الإلكترونية</h1>
+        <p data-i18n="aboutPageIntro">بوابة تعريفية تجمع روابط ومعلومات عن الخدمات والمؤسسات الحكومية في إقليم كوردستان، لتساعدك على معرفة نقطة البداية والجهة المناسبة.</p>
+    </div></section>
+    <section class="section"><div class="container">
+        <div class="about-layout">
+            <article class="about-panel">
+                <h2 data-i18n="aboutMissionTitle">هدف البوابة</h2>
+                <p data-i18n="aboutMissionText">نسعى إلى تسهيل الوصول إلى المعلومات الحكومية من خلال دليل منظم للخدمات والوزارات والمؤسسات، مع واجهة تدعم العربية والكوردية والإنجليزية.</p>
+                <div class="about-notice"><strong data-i18n="demoNoticeTitle">تنويه مهم</strong><br><span data-i18n="aboutDemoText">هذا مشروع تعليمي تجريبي وليس موقعاً حكومياً رسمياً. النماذج والبلاغات والمعاملات المعروضة للتجربة فقط، ولا تُرسل إلى أي جهة حكومية.</span></div>
+            </article>
+            <aside class="about-panel">
+                <h2 data-i18n="aboutAvailableTitle">ماذا تجد هنا؟</h2>
+                <ul>
+                    <li data-i18n="aboutFeatureServices">دليلاً إرشادياً لمجالات الخدمات الحكومية.</li>
+                    <li data-i18n="aboutFeatureInstitutions">قائمة بالوزارات والمؤسسات وصفحاتها التعريفية.</li>
+                    <li data-i18n="aboutFeatureDemo">نماذج تجريبية لتقديم البلاغات وإدارة المعاملات.</li>
+                    <li data-i18n="aboutFeatureLanguages">واجهة بثلاث لغات: العربية والكوردية والإنجليزية.</li>
+                </ul>
+            </aside>
+        </div>
+        <div class="about-panel about-steps">
+            <h2 data-i18n="aboutUseTitle">كيف تستخدم البوابة؟</h2>
+            <p data-i18n="aboutUseText">ابدأ من دليل الخدمات أو المؤسسات، ثم راجع صفحة الجهة المختصة لمعرفة المعلومات المتاحة. قد تختلف المتطلبات والإجراءات الرسمية؛ لذلك تحقق منها مباشرة لدى الجهة المعنية قبل التقديم.</p>
+            <div class="about-links">
+                <a href="services.html" data-i18n="aboutServicesLink">استكشف دليل الخدمات ←</a>
+                <a href="ministers.html" data-i18n="aboutInstitutionsLink">افتح دليل المؤسسات ←</a>
+            </div>
+        </div>
+    </div></section>
+</main>
+<footer class="footer"><div class="container">
+    <p data-i18n="aboutFooter">بوابة تعريفية تجريبية لخدمات ومؤسسات إقليم كوردستان.</p>
+    <p data-i18n="demoNotice">مشروع تعليمي تجريبي وليس بوابة حكومية رسمية.</p>
+</div></footer>
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>changeLanguage(localStorage.getItem("preferredLanguage") || "ar");</script>
+</body>
+</html>

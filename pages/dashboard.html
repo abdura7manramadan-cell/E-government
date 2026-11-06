@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Government | Property Transfer</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f1f5f9;color:#1e293b;font-family:Arial,sans-serif}
+header{background:#12345a;color:white;padding:22px}
+header h2{margin:0 0 8px}
+header p{margin:0;color:#dbeafe}
+.header-row{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.language-select{padding:10px;border-radius:7px;border:0;min-width:145px}
+.container{max-width:1250px;margin:auto;padding:20px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+nav button{background:white;color:#12345a;border:1px solid #ddd;padding:12px 17px;border-radius:8px;cursor:pointer;font-weight:bold}
+nav button.active,nav button:hover{background:#12345a;color:white}
+.section{display:none}
+.section.active{display:block}
+.panel,.stat,.employee{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px #00000008}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px;margin-bottom:20px}
+.stat h3{font-size:14px;color:#64748b;margin:0}
+.stat strong{display:block;font-size:28px;color:#12345a;margin-top:12px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+label{display:block;font-weight:bold;margin-bottom:7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:7px;font-family:Arial;font-size:14px}
+textarea{min-height:85px}
+.action{background:#12345a;color:white;border:0;padding:12px 20px;border-radius:7px;cursor:pointer;margin-top:15px}
+.action:hover{background:#1d4e80}
+.small{background:#e0ecf8;color:#12345a;border:0;padding:8px 12px;border-radius:6px;cursor:pointer;margin:3px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{text-align:start;padding:13px;border-bottom:1px solid #e2e8f0;font-size:13px}
+th{background:#f8fafc}
+.status{background:#e0f2fe;color:#075985;padding:6px 9px;border-radius:20px;font-size:12px;display:inline-block}
+.employee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.employee h3{color:#12345a;margin-top:0}
+.message{display:none;padding:12px;background:#dcfce7;color:#166534;margin-top:15px;border-radius:7px}
+.history-item{padding:12px;border-inline-start:3px solid #12345a;background:#f8fafc;margin:10px 0;border-radius:5px}
+.price-box{display:flex;align-items:stretch}
+.price-box input{border-radius:0 7px 7px 0}
+.price-box select{width:145px;border-radius:7px 0 0 7px;background:#e2e8f0;color:#12345a;font-weight:bold}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+footer{text-align:center;padding:25px;color:#64748b;font-size:13px}
+@media(max-width:600px){.container{padding:12px}nav button{flex:1}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-row">
+<div>
+<h2>E-Government</h2>
+<p data-dash="subtitle">نظام إدارة المعاملات الحكومية والموظفين</p>
+</div>
+<select class="language-select" id="dashboardLanguage" onchange="setDashboardLanguage(this.value)" aria-label="Language">
+<option value="ar">العربية</option>
+<option value="ku">کوردی</option>
+<option value="en">English</option>
+</select>
+</div>
+</header>
+
+<div class="container">
+
+<nav>
+<button class="active" data-section="home" onclick="showSection('home',this)" data-dash="home">الرئيسية</button>
+<button data-section="new" onclick="showSection('new',this)" data-dash="newTransaction">معاملة جديدة</button>
+<button data-section="transactions" onclick="showSection('transactions',this)" data-dash="transactions">المعاملات</button>
+<button data-section="employees" onclick="showSection('employees',this)" data-dash="employees">الموظفون</button>
+<button data-section="tracking" onclick="showSection('tracking',this)" data-dash="tracking">متابعة المعاملة</button>
+</nav>
+
+<section id="home" class="section active">
+<h2 data-dash="dashboardTitle">لوحة التحكم الرئيسية</h2>
+
+<div class="stats">
+<div class="stat"><h3 data-dash="totalTransactions">إجمالي المعاملات</h3><strong id="totalCount">0</strong></div>
+<div class="stat"><h3 data-dash="inProgress">قيد الإنجاز</h3><strong id="pendingCount">0</strong></div>
+<div class="stat"><h3 data-dash="completed">مكتملة</h3><strong id="completedCount">0</strong></div>
+<div class="stat"><h3 data-dash="employees">الموظفون</h3><strong>6</strong></div>
+</div>
+
+<div class="panel">
+<h3 data-dash="recentTransactions">آخر المعاملات</h3>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th data-dash="transactionNumber">رقم المعاملة</th>
+<th data-dash="seller">البائع</th>
+<th data-dash="buyer">المشتري</th>
+<th data-dash="stage">المرحلة</th>
+</tr></thead>
+<tbody id="recentTable"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="new" class="section">
+<div class="panel">
+<h2 data-dash="createTransfer">إنشاء معاملة نقل ملكية عقار</h2>
+
+<form id="newForm">
+<div class="form-grid">
+<div><label data-dash="seller">اسم البائع</label><input id="seller" required></div>
+<div><label data-dash="buyer">اسم المشتري</label><input id="buyer" required></div>
+<div><label data-dash="sellerID">رقم هوية البائع</label><input id="sellerID" required></div>
+<div><label data-dash="buyerID">رقم هوية المشتري</label><input id="buyerID" required></div>
+
+<div>
+<label data-dash="governorate">المحافظة</label>
+<select id="city" required>
+<option value="" data-dash="chooseGovernorate">اختر المحافظة</option>
+<option value="دهوك" data-city="duhok">دهوك</option>
+<option value="أربيل" data-city="erbil">أربيل</option>
+<option value="السليمانية" data-city="sulaymaniyah">السليمانية</option>
+<option value="حلبجة" data-city="halabja">حلبجة</option>
+</select>
+</div>
+
+<div><label data-dash="area">المنطقة</label><input id="area" required></div>
+<div><label data-dash="pieceNumber">رقم القطعة</label><input id="piece" required></div>
+<div><label data-dash="districtNumber">رقم المقاطعة</label><input id="district" required></div>
+
+<div>
+<label data-dash="propertyValue">قيمة العقار</label>
+<div class="price-box">
+<input id="price" type="number" min="0" step="any" required>
+<select id="currency">
+<option value="USD" data-dash="usd">دولار ($)</option>
+<option value="IQD" data-dash="iqd">دينار (د.ع)</option>
+</select>
+</div>
+</div>
+
+<div><label data-dash="requestDate">تاريخ الطلب</label><input id="date" type="date" required></div>
+</div>
+
+<div style="margin-top:15px">
+<label data-dash="extraDetails">تفاصيل إضافية (اختياري)</label>
+<textarea id="details"></textarea>
+</div>
+
+<button class="action" type="submit" data-dash="createAndRefer">إنشاء المعاملة وإحالتها للموظف رقم 2</button>
+<div id="formMessage" class="message"></div>
+</form>
+</div>
+</section>
+
+<section id="transactions" class="section">
+<div class="panel">
+<h2 data-dash="allTransactions">جميع المعاملات</h2>
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th data-dash="transactionNumber">رقم المعاملة</th>
+<th data-dash="seller">البائع</th>
+<th data-dash="buyer">المشتري</th>
+<th data-dash="currentEmployee">الموظف الحالي</th>
+<th data-dash="status">الحالة</th>
+<th data-dash="action">الإجراء</th>
+</tr></thead>
+<tbody id="transactionsTable"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="employees" class="section">
+<h2 data-dash="employeeManagement">إدارة الموظفين</h2>
+<div class="employee-grid" id="employeeGrid"></div>
+</section>
+
+<section id="tracking" class="section">
+<div class="panel">
+<h2 data-dash="trackTransaction">متابعة المعاملة</h2>
+<label data-dash="transactionNumber">رقم المعاملة</label>
+<input id="searchNumber" data-dash-placeholder="enterTransactionNumber" placeholder="أدخل رقم المعاملة">
+<button class="action" onclick="trackTransaction()" data-dash="search">بحث</button>
+<div id="trackingResult" style="margin-top:20px"></div>
+</div>
+</section>
+
+</div>
+
+<footer data-dash="footer">E-Government | نظام تجريبي لإدارة المعاملات الحكومية</footer>
+
+<!-- ربط ملف الترجمات الرئيسي -->
+<script src="../js/translations.js"></script>
+
+<script>
+const dashboardTexts = {
+ar:{
+subtitle:"نظام إدارة المعاملات الحكومية والموظفين",
+home:"الرئيسية",newTransaction:"معاملة جديدة",transactions:"المعاملات",employees:"الموظفون",tracking:"متابعة المعاملة",
+dashboardTitle:"لوحة التحكم الرئيسية",totalTransactions:"إجمالي المعاملات",inProgress:"قيد الإنجاز",completed:"مكتملة",
+recentTransactions:"آخر المعاملات",transactionNumber:"رقم المعاملة",seller:"البائع",buyer:"المشتري",stage:"المرحلة",
+createTransfer:"إنشاء معاملة نقل ملكية عقار",sellerID:"رقم هوية البائع",buyerID:"رقم هوية المشتري",
+governorate:"المحافظة",chooseGovernorate:"اختر المحافظة",area:"المنطقة",pieceNumber:"رقم القطعة",
+districtNumber:"رقم المقاطعة",propertyValue:"قيمة العقار",usd:"دولار ($)",iqd:"دينار (د.ع)",
+requestDate:"تاريخ الطلب",extraDetails:"تفاصيل إضافية (اختياري)",createAndRefer:"إنشاء المعاملة وإحالتها للموظف رقم 2",
+allTransactions:"جميع المعاملات",currentEmployee:"الموظف الحالي",status:"الحالة",action:"الإجراء",
+employeeManagement:"إدارة الموظفين",trackTransaction:"متابعة المعاملة",enterTransactionNumber:"أدخل رقم المعاملة",
+search:"بحث",footer:"E-Government | نظام تجريبي لإدارة المعاملات الحكومية",
+noTransactions:"لا توجد معاملات حالياً",noTransactionsShort:"لا توجد معاملات",manage:"إدارة",
+employee:"الموظف",employeeNumber:"الموظف رقم",specialty:"اختصاص الموظف",
+completedDemo:"مكتملة تجريبياً",notSpecified:"غير محدد",waitingEmployee:"بانتظار الموظف رقم",
+waitingDocuments:"بانتظار تدقيق المستمسكات لدى الموظف رقم 2",
+returned:"معادة للتصحيح عند الموظف رقم",done:"تم إنشاء المعاملة بنجاح وإحالتها للموظف رقم 2. رقم المعاملة: ",
+notFound:"لم يتم العثور على المعاملة.",details:"تفاصيل المعاملة",property:"العقار",
+price:"قيمة العقار",history:"سجل حركة المعاملة",employeeLabel:"الموظف رقم",
+approve:"اعتماد المرحلة وإرسالها للموظف التالي",return:"إعادة للتصحيح",showHistory:"عرض سجل المعاملة",
+enterAction:"أدخل رقم الإجراء:",enterReason:"اكتب سبب إعادة المعاملة:",confirmFinish:"تأكيد استكمال جميع الموافقات وإتمام التسجيل التجريبي؟",
+forwarded:"تم تحويل المعاملة بنجاح.",reasonPrefix:"إعادة المعاملة للتصحيح: ",approved:"اعتماد المرحلة وإحالة المعاملة",
+received:"استلام الطلب وإنشاء رقم المعاملة",referDocuments:"إحالة المعاملة إلى موظف تدقيق المستمسكات",
+employeeJobs:[
+["موظف استلام الطلبات","استلام الطلب وإنشاء رقم المعاملة"],
+["موظف تدقيق المستمسكات","تدقيق هويات ومستمسكات الطرفين"],
+["موظف تدقيق العقارات","التحقق من ملكية وبيانات العقار"],
+["موظف التقييم والرسوم","تقييم العقار واحتساب الرسوم"],
+["موظف الموافقات والتوقيع","مراجعة الموافقات والتوقيعات"],
+["موظف التسجيل النهائي","إكمال التسجيل وتحديث السجل"]
+],
+cities:{duhok:"دهوك",erbil:"أربيل",sulaymaniyah:"السليمانية",halabja:"حلبجة"},
+currencyUSD:"دولار أمريكي ($)",currencyIQD:"دينار عراقي (د.ع)"
+},
+ku:{
+subtitle:"سیستەمی بەڕێوەبردنی مامەڵە حکومییەکان و فەرمانبەران",
+home:"سەرەتا",newTransaction:"مامەڵەی نوێ",transactions:"مامەڵەکان",employees:"فەرمانبەران",tracking:"شوێنکەوتنی مامەڵە",
+dashboardTitle:"تەختەی سەرەکی بەڕێوەبردن",totalTransactions:"کۆی مامەڵەکان",inProgress:"لە پێشبردندایە",completed:"تەواوبووەکان",
+recentTransactions:"دوایین مامەڵەکان",transactionNumber:"ژمارەی مامەڵە",seller:"فرۆشیار",buyer:"کڕیار",stage:"قۆناغ",
+createTransfer:"دروستکردنی مامەڵەی گواستنەوەی موڵک",sellerID:"ژمارەی ناسنامەی فرۆشیار",buyerID:"ژمارەی ناسنامەی کڕیار",
+governorate:"پارێزگا",chooseGovernorate:"پارێزگا هەڵبژێرە",area:"ناوچە",pieceNumber:"ژمارەی پارچە",districtNumber:"ژمارەی کەرت",
+propertyValue:"نرخی موڵک",usd:"دۆلار ($)",iqd:"دینار (د.ع)",requestDate:"بەرواری داواکاری",
+extraDetails:"وردەکاری زیاتر (ئارەزوومەندانە)",createAndRefer:"دروستکردنی مامەڵە و ناردنی بۆ فەرمانبەری ژمارە ٢",
+allTransactions:"هەموو مامەڵەکان",currentEmployee:"فەرمانبەری ئێستا",status:"بارودۆخ",action:"کردار",
+employeeManagement:"بەڕێوەبردنی فەرمانبەران",trackTransaction:"شوێنکەوتنی مامەڵە",
+enterTransactionNumber:"ژمارەی مامەڵە بنووسە",search:"گەڕان",
+footer:"E-Government | سیستەمێکی تاقیکاری بۆ بەڕێوەبردنی مامەڵە حکومییەکان",
+noTransactions:"هیچ مامەڵەیەک نییە",noTransactionsShort:"هیچ مامەڵەیەک نییە",manage:"بەڕێوەبردن",
+employee:"فەرمانبەر",employeeNumber:"فەرمانبەری ژمارە",specialty:"پسپۆڕی فەرمانبەر",
+completedDemo:"بە شێوەی تاقیکاری تەواوبووە",notSpecified:"دیاری نەکراوە",waitingEmployee:"چاوەڕوانی فەرمانبەری ژمارە",
+waitingDocuments:"چاوەڕوانی پشکنینی بەڵگەنامەکان لەلایەن فەرمانبەری ژمارە ٢",
+returned:"گەڕێندراوەتەوە بۆ چاککردنەوە لای فەرمانبەری ژمارە",done:"مامەڵەکە بە سەرکەوتوویی دروستکرا. ژمارەی مامەڵە: ",
+notFound:"مامەڵەکە نەدۆزرایەوە.",details:"وردەکاری مامەڵە",property:"موڵک",
+price:"نرخی موڵک",history:"مێژووی جووڵەی مامەڵە",employeeLabel:"فەرمانبەری ژمارە",
+approve:"پەسەندکردنی قۆناغ و ناردنی بۆ فەرمانبەری داهاتوو",return:"گەڕاندنەوە بۆ چاککردنەوە",
+showHistory:"بینینی مێژووی مامەڵە",enterAction:"ژمارەی کردار بنووسە:",
+enterReason:"هۆکاری گەڕاندنەوە بنووسە:",confirmFinish:"دڵنیایت لە تەواوکردنی هەموو پەسەندکردنەکان و تۆمارکردنی تاقیکاری؟",
+forwarded:"مامەڵەکە بە سەرکەوتوویی گوازرایەوە.",reasonPrefix:"گەڕاندنەوەی مامەڵە بۆ چاککردنەوە: ",
+approved:"پەسەندکردنی قۆناغ و ناردنی مامەڵە",received:"وەرگرتنی داواکاری و دروستکردنی ژمارەی مامەڵە",
+referDocuments:"ناردنی مامەڵە بۆ فەرمانبەری پشکنینی بەڵگەنامەکان",
+employeeJobs:[
+["فەرمانبەری وەرگرتنی داواکاری","وەرگرتنی داواکاری و دروستکردنی ژمارەی مامەڵە"],
+["فەرمانبەری پشکنینی بەڵگەنامەکان","پشکنینی ناسنامە و بەڵگەنامەکانی هەردوو لایەن"],
+["فەرمانبەری پشکنینی موڵک","پشکنینی خاوەندارێتی و زانیارییەکانی موڵک"],
+["فەرمانبەری هەڵسەنگاندن و باج","هەڵسەنگاندنی موڵک و ژماردنی کرێ"],
+["فەرمانبەری ڕەزامەندی و واژۆ","پێداچوونەوە بە ڕەزامەندی و واژۆکان"],
+["فەرمانبەری تۆمارکردنی کۆتایی","تەواوکردنی تۆمارکردن و نوێکردنەوەی تۆمار"]
+],
+cities:{duhok:"دهۆک",erbil:"هەولێر",sulaymaniyah:"سلێمانی",halabja:"هەڵەبجە"},
+currencyUSD:"دۆلاری ئەمریکی ($)",currencyIQD:"دیناری عێراقی (د.ع)"
+},
+en:{
+subtitle:"Government Transactions and Employee Management System",
+home:"Home",newTransaction:"New Transaction",transactions:"Transactions",employees:"Employees",tracking:"Track Transaction",
+dashboardTitle:"Main Dashboard",totalTransactions:"Total Transactions",inProgress:"In Progress",completed:"Completed",
+recentTransactions:"Recent Transactions",transactionNumber:"Transaction Number",seller:"Seller",buyer:"Buyer",stage:"Stage",
+createTransfer:"Create Property Ownership Transfer",sellerID:"Seller ID Number",buyerID:"Buyer ID Number",
+governorate:"Governorate",chooseGovernorate:"Select Governorate",area:"Area",pieceNumber:"Plot Number",districtNumber:"District Number",
+propertyValue:"Property Value",usd:"US Dollar ($)",iqd:"Iraqi Dinar (IQD)",requestDate:"Request Date",
+extraDetails:"Additional Details (Optional)",createAndRefer:"Create Transaction and Send to Employee 2",
+allTransactions:"All Transactions",currentEmployee:"Current Employee",status:"Status",action:"Action",
+employeeManagement:"Employee Management",trackTransaction:"Track Transaction",
+enterTransactionNumber:"Enter transaction number",search:"Search",
+footer:"E-Government | Demo Government Transactions Management System",
+noTransactions:"No transactions available",noTransactionsShort:"No transactions",manage:"Manage",
+employee:"Employee",employeeNumber:"Employee Number",specialty:"Employee Specialty",
+completedDemo:"Completed (Demo)",notSpecified:"Not specified",waitingEmployee:"Waiting for Employee",
+waitingDocuments:"Waiting for document verification by Employee 2",
+returned:"Returned for correction to Employee",done:"Transaction created successfully and sent to Employee 2. Transaction number: ",
+notFound:"Transaction not found.",details:"Transaction Details",property:"Property",
+price:"Property Value",history:"Transaction History",employeeLabel:"Employee",
+approve:"Approve Stage and Send to Next Employee",return:"Return for Correction",showHistory:"View Transaction History",
+enterAction:"Enter action number:",enterReason:"Enter reason for return:",confirmFinish:"Confirm all approvals and complete the demo registration?",
+forwarded:"Transaction forwarded successfully.",reasonPrefix:"Returned for correction: ",
+approved:"Stage approved and transaction forwarded",received:"Application received and transaction number created",
+referDocuments:"Referred to document verification employee",
+employeeJobs:[
+["Application Receiving Officer","Receive application and create transaction number"],
+["Document Verification Officer","Verify identities and documents of both parties"],
+["Property Verification Officer","Verify property ownership and property details"],
+["Evaluation and Fees Officer","Evaluate property and calculate fees"],
+["Approval and Signature Officer","Review approvals and signatures"],
+["Final Registration Officer","Complete registration and update the registry"]
+],
+cities:{duhok:"Duhok",erbil:"Erbil",sulaymaniyah:"Sulaymaniyah",halabja:"Halabja"},
+currencyUSD:"US Dollar ($)",currencyIQD:"Iraqi Dinar (IQD)"
+}
+};
+
+let currentLanguage=localStorage.getItem("preferredLanguage")||"ar";
+if(!dashboardTexts[currentLanguage])currentLanguage="ar";
+
+const employees=[
+{number:1},{number:2},{number:3},{number:4},{number:5},{number:6}
+];
+
+let transactions=JSON.parse(localStorage.getItem("egovTransactions")||"[]");
+
+function tr(key){
+return dashboardTexts[currentLanguage][key]??dashboardTexts.ar[key]??key;
+}
+
+function setDashboardLanguage(language){
+if(!dashboardTexts[language])return;
+currentLanguage=language;
+localStorage.setItem("preferredLanguage",language);
+document.documentElement.lang=language;
+document.documentElement.dir=language==="en"?"ltr":"rtl";
+document.getElementById("dashboardLanguage").value=language;
+
+document.querySelectorAll("[data-dash]").forEach(el=>{
+const key=el.dataset.dash;
+if(dashboardTexts[language][key]!==undefined){
+el.textContent=dashboardTexts[language][key];
+}
+});
+
+document.querySelectorAll("[data-dash-placeholder]").forEach(el=>{
+const key=el.dataset.dashPlaceholder;
+if(dashboardTexts[language][key]!==undefined){
+el.placeholder=dashboardTexts[language][key];
+}
+});
+
+document.querySelectorAll("[data-city]").forEach(el=>{
+el.textContent=dashboardTexts[language].cities[el.dataset.city];
+});
+
+renderAll();
+}
+
+function saveData(){
+localStorage.setItem("egovTransactions",JSON.stringify(transactions));
+}
+
+function escapeHTML(value){
+return String(value??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function currencyName(currency){
+return currency==="IQD"?tr("currencyIQD"):tr("currencyUSD");
+}
+
+function employeeName(number){
+if(number===7)return tr("completed");
+return dashboardTexts[currentLanguage].employeeJobs[number-1]?.[0]||tr("notSpecified");
+}
+
+function showSection(id,button){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+renderAll();
+}
+
+document.getElementById("newForm").addEventListener("submit",function(event){
+event.preventDefault();
+
+const id="DHK-"+new Date().getFullYear()+"-"+String(Date.now()).slice(-6);
+
+const t={
+id,
+seller:document.getElementById("seller").value,
+buyer:document.getElementById("buyer").value,
+sellerID:document.getElementById("sellerID").value,
+buyerID:document.getElementById("buyerID").value,
+city:document.getElementById("city").value,
+area:document.getElementById("area").value,
+piece:document.getElementById("piece").value,
+district:document.getElementById("district").value,
+price:document.getElementById("price").value,
+currency:document.getElementById("currency").value,
+date:document.getElementById("date").value,
+details:document.getElementById("details").value,
+employee:2,
+status:tr("waitingDocuments"),
+history:[
+{employee:1,action:tr("received"),date:new Date().toLocaleString()},
+{employee:2,action:tr("referDocuments"),date:new Date().toLocaleString()}
+]
+};
+
+transactions.unshift(t);
+saveData();
+
+const msg=document.getElementById("formMessage");
+msg.style.display="block";
+msg.textContent=tr("done")+id;
+
+this.reset();
+renderAll();
+});
+
+function renderEmployees(){
+document.getElementById("employeeGrid").innerHTML=employees.map(e=>{
+const job=dashboardTexts[currentLanguage].employeeJobs[e.number-1];
+return `
+<div class="employee">
+<h3>${tr("employeeNumber")} ${e.number}</h3>
+<strong>${escapeHTML(job[0])}</strong>
+<p>${escapeHTML(job[1])}</p>
+<span class="status">${tr("specialty")}</span>
+</div>`;
+}).join("");
+}
+
+function renderTransactions(){
+const table=document.getElementById("transactionsTable");
+table.innerHTML=transactions.map(t=>`
+<tr>
+<td>${escapeHTML(t.id)}</td>
+<td>${escapeHTML(t.seller)}</td>
+<td>${escapeHTML(t.buyer)}</td>
+<td>${escapeHTML(employeeName(t.employee))}</td>
+<td><span class="status">${escapeHTML(t.status)}</span></td>
+<td><button class="small" onclick="openTransaction('${escapeHTML(t.id)}')">${tr("manage")}</button></td>
+</tr>`).join("");
+
+if(!transactions.length){
+table.innerHTML=`<tr><td colspan="6">${tr("noTransactions")}</td></tr>`;
+}
+}
+
+function renderHome(){
+document.getElementById("totalCount").textContent=transactions.length;
+document.getElementById("pendingCount").textContent=transactions.filter(t=>t.employee<7).length;
+document.getElementById("completedCount").textContent=transactions.filter(t=>t.employee===7).length;
+
+document.getElementById("recentTable").innerHTML=transactions.slice(0,5).map(t=>`
+<tr>
+<td>${escapeHTML(t.id)}</td>
+<td>${escapeHTML(t.seller)}</td>
+<td>${escapeHTML(t.buyer)}</td>
+<td>${escapeHTML(t.status)}</td>
+</tr>`).join("")||`<tr><td colspan="4">${tr("noTransactionsShort")}</td></tr>`;
+}
+
+function openTransaction(id){
+const t=transactions.find(x=>x.id===id);
+if(!t)return;
+
+const action=prompt(
+tr("transactionNumber")+": "+t.id+
+"\n"+tr("currentEmployee")+": "+employeeName(t.employee)+
+"\n\n1 - "+tr("approve")+
+"\n2 - "+tr("return")+
+"\n3 - "+tr("showHistory")+
+"\n\n"+tr("enterAction")
+);
+
+if(action==="1"){
+if(t.employee===6){
+if(!confirm(tr("confirmFinish")))return;
+t.employee=7;
+t.status=tr("completedDemo");
+}else{
+t.employee++;
+t.status=tr("waitingEmployee")+" "+t.employee;
+}
+
+t.history.push({
+employee:t.employee,
+action:tr("approved"),
+date:new Date().toLocaleString()
+});
+
+saveData();
+renderAll();
+alert(tr("forwarded"));
+
+}else if(action==="2"){
+const reason=prompt(tr("enterReason"));
+if(!reason)return;
+
+const previous=Math.max(1,t.employee-1);
+t.history.push({
+employee:t.employee,
+action:tr("reasonPrefix")+reason,
+date:new Date().toLocaleString()
+});
+
+t.employee=previous;
+t.status=tr("returned")+" "+previous;
+saveData();
+renderAll();
+
+}else if(action==="3"){
+alert(t.history.map(h=>
+tr("employeeLabel")+" "+h.employee+
+"\n"+h.action+
+"\n"+h.date
+).join("\n\n"));
+}
+}
+
+function trackTransaction(){
+const id=document.getElementById("searchNumber").value.trim();
+const t=transactions.find(x=>x.id===id);
+const result=document.getElementById("trackingResult");
+
+if(!t){
+result.innerHTML=`<p>${tr("notFound")}</p>`;
+return;
+}
+
+result.innerHTML=`
+<div class="panel">
+<h3>${tr("details")}: ${escapeHTML(t.id)}</h3>
+<p>${tr("seller")}: ${escapeHTML(t.seller)}</p>
+<p>${tr("buyer")}: ${escapeHTML(t.buyer)}</p>
+<p>${tr("governorate")}: ${escapeHTML(t.city)}</p>
+<p>${tr("area")}: ${escapeHTML(t.area)}</p>
+<p>${tr("pieceNumber")}: ${escapeHTML(t.piece)}</p>
+<p>${tr("districtNumber")}: ${escapeHTML(t.district)}</p>
+<p>${tr("price")}: ${escapeHTML(t.price)} ${currencyName(t.currency)}</p>
+<p>${tr("status")}: ${escapeHTML(t.status)}</p>
+<h3>${tr("history")}</h3>
+${t.history.map(h=>`
+<div class="history-item">
+<strong>${tr("employeeLabel")} ${h.employee}</strong>
+<p>${escapeHTML(h.action)}</p>
+<small>${escapeHTML(h.date)}</small>
+</div>`).join("")}
+</div>`;
+}
+
+function renderAll(){
+renderHome();
+renderTransactions();
+renderEmployees();
+}
+
+document.addEventListener("keydown",function(event){
+const arrowKeys=["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"];
+if(!arrowKeys.includes(event.key))return;
+
+const active=document.activeElement;
+const editing=active&&(
+active.tagName==="INPUT"||
+active.tagName==="TEXTAREA"||
+active.tagName==="SELECT"||
+active.isContentEditable
+);
+if(editing)return;
+
+const candidates=Array.from(document.querySelectorAll(
+"button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled)"
+)).filter(el=>el.getClientRects().length>0&&getComputedStyle(el).visibility!=="hidden");
+
+if(!candidates.length)return;
+const current=candidates.includes(active)?active:null;
+
+if(!current){
+event.preventDefault();
+candidates[0].focus();
+return;
+}
+
+const r=current.getBoundingClientRect();
+const cx=r.left+r.width/2,cy=r.top+r.height/2;
+let best=null,bestScore=Infinity;
+
+candidates.forEach(el=>{
+if(el===current)return;
+const a=el.getBoundingClientRect();
+const dx=a.left+a.width/2-cx;
+const dy=a.top+a.height/2-cy;
+let primary,secondary;
+
+if(event.key==="ArrowRight"){if(dx<=0)return;primary=dx;secondary=Math.abs(dy);}
+if(event.key==="ArrowLeft"){if(dx>=0)return;primary=-dx;secondary=Math.abs(dy);}
+if(event.key==="ArrowDown"){if(dy<=0)return;primary=dy;secondary=Math.abs(dx);}
+if(event.key==="ArrowUp"){if(dy>=0)return;primary=-dy;secondary=Math.abs(dx);}
+
+const score=primary+secondary*1.5;
+if(score<bestScore){bestScore=score;best=el;}
+});
+
+if(best){event.preventDefault();best.focus();}
+});
+
+setDashboardLanguage(currentLanguage);
+</script>
+</body>
+</html>

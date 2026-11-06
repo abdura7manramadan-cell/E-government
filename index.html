@@ -29,9 +29,62 @@
             direction: ltr;
         }
 
+        /* نظام إدارة المعاملات */
+        .transaction-section {
+            background: #f1f5f9;
+            padding: 55px 0;
+        }
+
+        .transaction-card {
+            background: #ffffff;
+            max-width: 850px;
+            margin: auto;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 18px #0000000d;
+            border-top: 4px solid #12345a;
+        }
+
+        .transaction-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .transaction-card h2 {
+            color: #12345a;
+            margin-bottom: 12px;
+        }
+
+        .transaction-card p {
+            color: #64748b;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .transaction-button {
+            display: inline-block;
+            background: #12345a;
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .transaction-button:hover {
+            background: #1d4e80;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 600px) {
             .developer-credit .developer-name {
                 font-size: 17px;
+            }
+
+            .transaction-card {
+                padding: 25px 15px;
             }
         }
     </style>
@@ -52,6 +105,7 @@
             <a href="pages/services.html" data-i18n="services">الخدمات الإلكترونية</a>
             <a href="pages/ministers.html" data-i18n="ministries">الوزارات والمؤسسات</a>
             <a href="pages/about.html" data-i18n="about">عن البوابة</a>
+            <a href="pages/dashboard.html" data-i18n="dashboard">إدارة المعاملات</a>
             <a href="login.html" data-i18n="login">تسجيل الدخول</a>
 
             <select class="language-select">
@@ -66,7 +120,6 @@
 <section class="hero">
     <div class="container hero-content">
 
-        <!-- Developer Credit -->
         <div class="developer-credit">
             <p class="developer-label" id="developerLabel">
                 تصميم وتطوير بواسطة
@@ -118,32 +171,59 @@
             <article class="card service-card">
                 <div class="card-icon">📄</div>
                 <h3 data-i18n="documents">الوثائق الرسمية</h3>
-                <p>معلومات عن الخدمات المتعلقة بالوثائق والمعاملات الرسمية.</p>
+                <p data-i18n="documentsDesc">معلومات عن الخدمات المتعلقة بالوثائق والمعاملات الرسمية.</p>
                 <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
             </article>
 
             <article class="card service-card">
                 <div class="card-icon">🚦</div>
                 <h3 data-i18n="traffic">خدمات المرور</h3>
-                <p>معلومات عن خدمات المرور والمركبات.</p>
+                <p data-i18n="trafficDesc">معلومات عن خدمات المرور والمركبات.</p>
                 <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
             </article>
 
             <article class="card service-card">
                 <div class="card-icon">👥</div>
                 <h3 data-i18n="citizens">خدمات المواطنين</h3>
-                <p>الوصول إلى معلومات الخدمات المخصصة للمواطنين.</p>
+                <p data-i18n="citizensDesc">الوصول إلى معلومات الخدمات المخصصة للمواطنين.</p>
                 <a href="pages/services.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
             </article>
 
             <article class="card service-card">
                 <div class="card-icon">🏛️</div>
-                <h3>المؤسسات الحكومية</h3>
-                <p>استعراض الوزارات والدوائر والهيئات الحكومية.</p>
+                <h3 data-i18n="institutionsTitle">المؤسسات الحكومية</h3>
+                <p data-i18n="institutionsDesc">استعراض الوزارات والدوائر والهيئات الحكومية.</p>
                 <a href="pages/ministers.html" class="card-link" data-i18n="readMore">المزيد من المعلومات</a>
             </article>
 
         </div>
+    </div>
+</section>
+
+<!-- نظام إدارة المعاملات الحكومية -->
+<section class="transaction-section">
+    <div class="container">
+
+        <h2 class="section-title" data-i18n="transactionSystem">نظام إدارة المعاملات الحكومية</h2>
+
+        <div class="section-line"></div>
+
+        <div class="transaction-card">
+            <div class="transaction-icon">🏢</div>
+
+            <h2 data-i18n="propertyWorkflow">نظام نقل ملكية العقارات</h2>
+
+            <p data-i18n="propertyWorkflowDesc">
+                نظام إلكتروني تجريبي لإدارة معاملات نقل ملكية العقارات،
+                ومتابعة مراحل التدقيق والموافقات والتسجيل النهائي
+                من خلال ستة موظفين.
+            </p>
+
+            <a href="pages/dashboard.html" class="transaction-button" data-i18n="transactionButton">
+                الدخول إلى نظام إدارة المعاملات ←
+            </a>
+        </div>
+
     </div>
 </section>
 
@@ -152,17 +232,17 @@
 
         <div class="stat-item">
             <h2>19</h2>
-            <p>وزارة</p>
+            <p data-i18n="ministryCount">وزارة</p>
         </div>
 
         <div class="stat-item">
             <h2>5</h2>
-            <p>دوائر</p>
+            <p data-i18n="departmentCount">دوائر</p>
         </div>
 
         <div class="stat-item">
             <h2>9</h2>
-            <p>هيئات ومؤسسات أخرى</p>
+            <p data-i18n="authorityCount">هيئات ومؤسسات أخرى</p>
         </div>
 
     </div>
@@ -186,7 +266,7 @@
             <span data-i18n="footer">جميع الحقوق محفوظة</span>
         </p>
 
-        <p>نسخة تجريبية لمشروع تعليمي وليست بوابة حكومية رسمية.</p>
+        <p data-i18n="demoNotice">نسخة تجريبية لمشروع تعليمي وليست بوابة حكومية رسمية.</p>
     </div>
 </footer>
 
@@ -194,7 +274,6 @@
 <script src="js/app.js"></script>
 
 <script>
-    // Developer credit translations
     const developerLabels = {
         ar: "تصميم وتطوير بواسطة",
         ku: "دیزاین و پەرەپێدانی لەلایەن",
@@ -215,7 +294,6 @@
         selector.addEventListener("change", updateDeveloperLabel);
     });
 
-    // Apply saved language on page load
     document.addEventListener("DOMContentLoaded", function() {
         const savedLanguage = localStorage.getItem("preferredLanguage") || "ar";
 

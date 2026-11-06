@@ -3,148 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وزارة الصحة - بوابة حكومة إقليم كوردستان</title>
+    <meta name="description" content="اختَر المحافظة والقضاء للعثور على المستشفيات والجهات الصحية.">
+    <title id="pageTitle">وزارة الصحة | بوابة حكومة إقليم كوردستان</title>
     <link rel="stylesheet" href="../css/style.css">
-
-    <style>
-        .ministry-details {
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .ministry-info {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,.08);
-            margin-bottom: 30px;
-        }
-
-        .ministry-info h2 {
-            color: #10243a;
-            margin-bottom: 15px;
-        }
-
-        .ministry-info p {
-            line-height: 2;
-        }
-
-        .department-card {
-            background: white;
-            padding: 22px;
-            border-radius: 10px;
-            border: 1px solid #eee;
-        }
-
-        .department-card h3 {
-            color: #10243a;
-            margin-bottom: 10px;
-        }
-
-        .service-note {
-            background: #f0f5f9;
-            padding: 20px;
-            border-radius: 10px;
-            line-height: 2;
-            margin-top: 20px;
-        }
-    </style>
 </head>
-
 <body>
-
 <header class="header">
     <div class="container header-container">
-        <a href="../index.html" class="logo">
-            🏛️ بوابة حكومة إقليم كوردستان
-        </a>
-
-        <nav class="navbar">
-            <a href="../index.html">الرئيسية</a>
-            <a href="services.html">الخدمات الإلكترونية</a>
-            <a href="ministers.html">الوزارات والمؤسسات</a>
-            <a href="about.html">عن البوابة</a>
+        <a href="../index.html" class="logo"><span>🏛️</span><span id="siteName">بوابة حكومة إقليم كوردستان</span></a>
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        <nav class="navbar" aria-label="القائمة الرئيسية">
+            <a href="../index.html" id="navHome">الرئيسية</a><a href="services.html" id="navServices">الخدمات الإلكترونية</a>
+            <a href="ministers.html" id="navInstitutions">الوزارات والمؤسسات</a><a href="about.html" id="navAbout">عن البوابة</a>
+            <select class="language-select" aria-label="اللغة"><option value="ar">العربية</option><option value="ku">کوردی</option><option value="en">English</option></select>
         </nav>
     </div>
 </header>
-
-<section class="page-banner">
-    <div class="container">
-        <h1>وزارة الصحة</h1>
-        <p>المعلومات والخدمات الصحية في إقليم كوردستان</p>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container ministry-details">
-
-        <div class="ministry-info">
-            <h2>نبذة عن الوزارة</h2>
-            <p>
-                تُعنى وزارة الصحة بتنظيم وتطوير القطاع الصحي،
-                والإشراف على المؤسسات والخدمات الصحية،
-                والعمل على تحسين مستوى الرعاية الصحية للمواطنين
-                في إقليم كوردستان.
-            </p>
+<main>
+    <section class="page-banner health-banner"><div class="container">
+        <p class="eyebrow" id="healthEyebrow">دليل المؤسسات الصحية</p>
+        <h1 id="healthTitle">وزارة الصحة</h1>
+        <p id="healthIntro">اختَر مكانك حتى تشوف المستشفيات والمراكز والجهات الصحية القريبة منك.</p>
+    </div></section>
+    <section class="section health-finder"><div class="container">
+        <div class="finder-heading"><div><span class="eyebrow" id="finderEyebrow">ابحث حسب موقعك</span><h2 id="finderTitle">وين تريد تبحث؟</h2></div><span class="finder-icon" aria-hidden="true">📍</span></div>
+        <div class="location-picker">
+            <div class="field"><label for="governorateSelect" id="governorateLabel">المحافظة</label><select id="governorateSelect"><option value="" data-health-option="chooseGovernorate">اختَر المحافظة</option><option value="duhok" data-health-option="duhok">دهوك</option><option value="erbil" data-health-option="erbil">أربيل</option><option value="sulaymaniyah" data-health-option="sulaymaniyah">السليمانية</option><option value="halabja" data-health-option="halabja">حلبجة</option></select></div>
+            <div class="field"><label for="districtSelect" id="districtLabel">القضاء</label><select id="districtSelect" disabled><option value="" data-health-option="chooseGovernorateFirst">اختَر المحافظة أولاً</option></select></div>
         </div>
-
-        <h2 class="section-title">اختصاصات الوزارة</h2>
-        <div class="section-line"></div>
-
-        <div class="cards-grid">
-
-            <div class="department-card">
-                <h3>المستشفيات</h3>
-                <p>معلومات المستشفيات والمؤسسات الصحية.</p>
-            </div>
-
-            <div class="department-card">
-                <h3>المراكز الصحية</h3>
-                <p>معلومات المراكز الصحية والخدمات المقدمة.</p>
-            </div>
-
-            <div class="department-card">
-                <h3>الرعاية الصحية</h3>
-                <p>معلومات برامج الرعاية الصحية والوقاية.</p>
-            </div>
-
-            <div class="department-card">
-                <h3>الخدمات الطبية</h3>
-                <p>معلومات الخدمات الطبية المتاحة للمواطنين.</p>
-            </div>
-
+        <p class="finder-hint" id="finderHint">بعد اختيار القضاء، راح تظهر المؤسسات الصحية المدرجة للموقع.</p>
+        <div id="facilityArea" class="facility-area" hidden>
+            <div class="facility-filter"><label for="facilityType" id="facilityTypeLabel">نوع المكان</label><select id="facilityType"><option value="all" data-filter-label="all">الكل</option><option value="publicHospital" data-filter-label="publicHospital">مستشفيات حكومية</option><option value="privateHospital" data-filter-label="privateHospital">مستشفيات أهلية</option><option value="clinic" data-filter-label="clinic">عيادات ومراكز تخصصية</option><option value="pharmacy" data-filter-label="pharmacy">صيدليات</option><option value="pharmacy24" data-filter-label="pharmacy24">صيدليات 24 ساعة</option></select></div>
+            <div class="results-heading"><div><h2 id="resultsTitle">المؤسسات الصحية</h2><p id="resultsSubtitle"></p></div><span id="resultCount" class="result-count"></span></div>
+            <div id="facilityGrid" class="cards-grid facility-grid"></div>
+            <p id="emptyMessage" class="empty-message" hidden>ماكو مؤسسات مضافة لهذا القضاء حالياً.</p>
+            <a id="mapSearchAll" class="source-link" href="#" target="_blank" rel="noopener noreferrer" hidden>شوف نتائج أكثر على الخريطة ←</a>
+            <a id="officialDirectory" class="source-link" href="https://duhokhealth.org/department-locations?lang=en" target="_blank" rel="noopener noreferrer" hidden>تصفّح دليل صحة دهوك الرسمي للمرافق والخريطة ←</a>
         </div>
+    </div></section>
+</main>
+<footer class="footer"><div class="container"><p id="footerLine1">دليل تعريفي ضمن مشروع تعليمي تجريبي.</p><p id="footerLine2">روابط الخرائط تفتح بحثاً عن موقع المؤسسة في Google Maps.</p><p id="footerLine3">القائمة مختارة وليست شاملة؛ تحقق هاتفياً من العنوان والدوام قبل الزيارة.</p></div></footer>
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>
+const districts = {
+    duhok: ["مركز دهوك", "عقرة", "بردرش", "زاخو", "سميل", "شيخان", "العمادية", "مانكيش"],
+    erbil: ["مركز أربيل", "جومان", "خبات", "رواندوز", "سوران", "شقلاوة", "كوية", "مخمور", "ميركةسور", "چومان", "عنكاوا", "عينكاوا", "حرير", "بالكايتي", "سيدكان", "ديانا", "بحركة", "قوشتبة"],
+    sulaymaniyah: ["مركز السليمانية", "بشدر", "بنجوين", "جمجمال", "دربنديخان", "دوكان", "كلار", "كفري", "ماوت", "قرداغ", "رانية", "سيد صادق", "شاربازير", "شهرزور", "قلعة دزة", "تكية", "رزگاري"],
+    halabja: ["مركز حلبجة", "خورمال"]
+};
 
-        <h2 class="section-title" style="margin-top:45px;">
-            الخدمات الإلكترونية
-        </h2>
+// Curated sample directory. Confirm hours and availability with each facility before visiting.
+const facilities = [
+    { district: "مركز دهوك", name: "مستشفى آزادي التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى تعليمي", map: "Azadi Teaching Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى طوارئ دهوك التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ", map: "Duhok Emergency Teaching Hospital" },
+    { district: "مركز دهوك", name: "مستشفى هيفي للأطفال التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الأطفال", map: "Heevi Pediatric Teaching Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى گولان العام", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى عام", map: "Gulan General Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى روزانا", kind: "مستشفى", category: "publicHospital", specialty: "مستشفى", map: "Rozana Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى الحروق والجراحة الترميمية", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الحروق والجراحة الترميمية", map: "Burns and Reconstructive Surgery Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى العيون في دهوك", kind: "مستشفى حكومي", category: "publicHospital", specialty: "العيون", map: "Duhok Eye Hospital" },
+    { district: "مركز دهوك", name: "مستشفى دهوك للنسائية والتوليد التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "النسائية والتوليد", map: "Duhok Obstetrics and Gynecology Teaching Hospital" },
+    { district: "مركز دهوك", name: "مركز آزادي لأمراض الجهاز الهضمي والكبد", kind: "مركز تخصصي", category: "clinic", specialty: "الجهاز الهضمي والكبد", map: "Azadi Gastroenterology and Hepatology Center, Duhok" },
+    { district: "مركز دهوك", name: "مركز الروماتيزم والتأهيل الطبي", kind: "مركز تخصصي", category: "clinic", specialty: "الروماتيزم والتأهيل", map: "Rheumatology and Medical Rehabilitation Center, Duhok" },
+    { district: "مركز دهوك", name: "مركز ژين لأمراض دم وسرطان الأطفال", kind: "مركز تخصصي", category: "clinic", specialty: "أمراض الدم وسرطان الأطفال", map: "Zhin Pediatric Hematoncology Center, Duhok" },
+    { district: "مركز دهوك", name: "مركز الكشف المبكر عن إعاقة الأطفال", kind: "مركز تخصصي", category: "clinic", specialty: "الكشف المبكر والتأهيل", map: "Early Detection of Childhood Disability Center, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى شيريان", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", map: "Shiryan Hospital, Duhok", website: "https://www.starkarhealth.com/Home/Providers" },
+    { district: "مركز دهوك", name: "مستشفى ڤەژین الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", map: "Vajeen Private Hospital, Duhok", website: "https://www.starkarhealth.com/Home/Providers" },
+    { district: "مركز دهوك", name: "مستشفى Wan Global الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", map: "Wan Global Private Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى شيلان الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", map: "Shilan Private Hospital, Duhok" },
+    { district: "مركز دهوك", name: "مستشفى كوردستان الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "النسائية والأطفال والطب العام", map: "Kurdistan Private Hospital, Duhok" },
+    { district: "مركز دهوك", name: "صيدلية هەناسە", kind: "صيدلية", category: "pharmacy", specialty: "مفتوحة يومياً حتى 4:00 فجراً", hours: "2:00 PM–4:00 AM daily", map: "Hanasa Pharmacy, Qazi Muhammad Road, Duhok", website: "https://www.hanasapharmacy.com/" },
+    { district: "مركز دهوك", name: "صيدلية تايم", kind: "صيدلية 24 ساعة", category: "pharmacy24", specialty: "مفتوحة 24 ساعة بحسب بيانات الصيدلية المنشورة", hours: "24 hours", map: "Time Pharmacy, Duhok Iraq", website: "https://www.findhealthclinics.org/IQ/Duhok/1102395973264376/%D8%B5%D9%8A%D8%AF%D9%84%D9%8A%D8%A9-%D8%AA%D8%A7%D9%8A%D9%85-TIME-Pharmacy" },
+    { district: "مركز دهوك", name: "صيدلية جودي", kind: "صيدلية", category: "pharmacy", specialty: "ساعات العمل تختلف حسب اليوم", hours: "Hours vary by day", map: "Jody Pharmacy, Qazi Mohammad Road, Duhok" },
+    { district: "عقرة", name: "مستشفى الطوارئ والولادة في عقرة", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ والولادة", map: "Akre Emergency and Obstetrics Hospital" },
+    { district: "عقرة", name: "مستشفى آيندة الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", map: "Ayenda Private Hospital, Akre" },
+    { district: "العمادية", name: "مستشفى صديق الأم والطفل في العمادية", kind: "مستشفى حكومي", category: "publicHospital", specialty: "رعاية الأم والطفل", map: "Amadiya Baby Friendly Hospital" },
 
-        <div class="section-line"></div>
+    // Erbil: names and public contact numbers from the Erbil Governorate directory.
+    { district: "مركز أربيل", name: "مستشفى رزكاري التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى تعليمي", phone: "0662271518", map: "Rizgary Teaching Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى الجمهوري", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى عام", phone: "0662230402", map: "Republic Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى الولادة", kind: "مستشفى حكومي", category: "publicHospital", specialty: "النسائية والتوليد", phone: "0662222465", map: "Maternity Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى الطوارئ الغربي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ", phone: "0662509843", map: "West Erbil Emergency Hospital", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى الطوارئ المركزي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ", phone: "0662230406", map: "Central Emergency Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى الطوارئ الشرقي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ", phone: "0662274013", map: "East Emergency Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى رابرين للأطفال", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الأطفال", phone: "07511941410", map: "Raparin Pediatric Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى زانياري", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى تخصصي", phone: "0662230607", map: "Zaniari Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى نانكلي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "أمراض الدم والسرطان", phone: "0662548301", map: "Nanakali Hospital, Erbil", website: "https://www.erbil.gov.krd/app/ar/useful-numbers" },
+    { district: "مركز أربيل", name: "مستشفى بار الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", phone: "+964662107001", map: "Par Hospital, Erbil", website: "https://www.gov.uk/government/publications/iraq-doctors-and-medical-facilities/list-of-english-speaking-doctors-in-iraq" },
+    { district: "مركز أربيل", name: "مستشفى زين الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", phone: "+964662552518", map: "Zheen Hospital, Erbil", website: "https://www.gov.uk/government/publications/iraq-doctors-and-medical-facilities/list-of-english-speaking-doctors-in-iraq" },
+    { district: "مركز أربيل", name: "مستشفى شيفا الأهلي", kind: "مستشفى أهلي", category: "privateHospital", specialty: "مستشفى أهلي", phone: "+964662532225", map: "Shifa Hospital, Erbil", website: "https://www.gov.uk/government/publications/iraq-doctors-and-medical-facilities/list-of-english-speaking-doctors-in-iraq" },
+    { district: "مركز أربيل", name: "صيدلية دالاني برياتي", kind: "صيدلية 24 ساعة", category: "pharmacy24", specialty: "حي برياتي، مقابل حديقة برياتي", hours: "24/7", phone: "+9647501144008", map: "Dalany Brayati Pharmacy, Erbil", website: "https://dalanypharmacy.com/en/branches" },
+    { district: "مركز أربيل", name: "صيدلية دالاني رزكاري", kind: "صيدلية 24 ساعة", category: "pharmacy24", specialty: "شارع 100 متر، مقابل مستشفى رزكاري", hours: "24/7", phone: "+9647506364008", map: "Dalany Rizgari Pharmacy, Erbil", website: "https://dalanypharmacy.com/en/branches" },
+    { district: "مركز أربيل", name: "صيدلية دالاني زانكو", kind: "صيدلية 24 ساعة", category: "pharmacy24", specialty: "شارع 100 متر", hours: "24/7", phone: "+9647506254008", map: "Dalany Zanko Pharmacy, Erbil", website: "https://dalanypharmacy.com/en/branches" },
+    { district: "مركز أربيل", name: "صيدلية ياس - شارع 60 متر", kind: "صيدلية", category: "pharmacy", specialty: "فرع شارع 60 متر", map: "Yas Pharmacy 60m Street, Erbil", website: "https://yaspharmacy.com/" },
+    { district: "مركز أربيل", name: "صيدلية ياس - عنكاوا", kind: "صيدلية", category: "pharmacy", specialty: "فرع عنكاوا", map: "Yas Pharmacy Ankawa, Erbil", website: "https://yaspharmacy.com/" },
+    { district: "مركز أربيل", name: "صيدلية سرواران - فرمانبران", kind: "صيدلية 24 ساعة", category: "pharmacy24", specialty: "فرع فرمانبران", hours: "24/7 بحسب موقع الصيدلية", map: "Sarwaran Pharmacy Farmanbaran, Erbil", website: "https://sarwaranpharmacy.com/ar/branch/" },
 
-        <div class="service-note">
-            <h3>الخدمات المتاحة</h3>
-            <p>
-                سيتم إضافة الخدمات الإلكترونية الرسمية وطرق
-                تقديم الطلبات ومتابعة المعاملات بعد التحقق من
-                المعلومات والجهات المسؤولة عنها.
-            </p>
-        </div>
+    // Sulaymaniyah: public hospital names from the Governorate's health directory.
+    { district: "مركز السليمانية", name: "مستشفى شار التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى تعليمي", map: "Shar Teaching Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى السليمانية التعليمي", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى تعليمي", map: "Sulaymaniyah Teaching Hospital", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=246&secID=78" },
+    { district: "مركز السليمانية", name: "مستشفى أمراض القلب", kind: "مستشفى حكومي", category: "publicHospital", specialty: "أمراض القلب", map: "Heart Disease Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى الحروق والجراحة التجميلية", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الحروق والجراحة التجميلية", map: "Burns and Cosmetic Surgery Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى الأمراض الباطنية", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الأمراض الباطنية", map: "Internal Medicine Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى الشهيد الدكتور هيمن", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى عام", map: "Shahid Dr Hemen Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى الدكتور جمال أحمد رشيد للأطفال", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الأطفال", map: "Dr Jamal Ahmad Rashid Pediatric Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "مستشفى هيوا للأورام", kind: "مستشفى حكومي", category: "publicHospital", specialty: "أمراض السرطان", map: "Hiwa Cancer Hospital, Sulaymaniyah" },
+    { district: "مركز السليمانية", name: "مستشفى شورش للأمراض النفسية", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الصحة النفسية", map: "Shorsh Mental Health Hospital, Sulaymaniyah", website: "https://slemani.gov.krd/ar/newsDetail.php?newsID=128&secID=40" },
+    { district: "مركز السليمانية", name: "صيدلية ميلينيوم", kind: "صيدلية", category: "pharmacy", specialty: "منطقة سرجنار", map: "Millennium Pharmacy, Sarchnar, Sulaymaniyah", website: "https://www.findhealthclinics.org/IQ/Sulaymaniyah/133825/genre/134381433294944/Pharmacy-%2F-Drugstore" },
+    { district: "مركز السليمانية", name: "صيدلية مسلم", kind: "صيدلية", category: "pharmacy", specialty: "شارع آشتي", map: "Muslim Pharmacy, Ashti Street, Sulaymaniyah", website: "https://www.findhealthclinics.org/IQ/Sulaymaniyah/133825/genre/134381433294944/Pharmacy-%2F-Drugstore" },
+    { district: "مركز السليمانية", name: "صيدلية نەسیم", kind: "صيدلية", category: "pharmacy", specialty: "وسط مدينة السليمانية", map: "Nasem Pharmacy, Sulaymaniyah" },
+    { district: "مركز السليمانية", name: "صيدلية دایک", kind: "صيدلية", category: "pharmacy", specialty: "وسط مدينة السليمانية", map: "Daik Pharmacy, Sulaymaniyah" },
+    { district: "مركز السليمانية", name: "صيدلية ڤاری", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Vari Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية آوات", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Awaat Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية بلال", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Bilal Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية آدم", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Adam Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية ميدلاين", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Medline Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية زارا", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Zara Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية جودي", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Jody Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
+    { district: "مركز السليمانية", name: "صيدلية كاسو", kind: "صيدلية", category: "pharmacy", specialty: "السليمانية", map: "Kaso Pharmacy, Sulaymaniyah", website: "https://qaymny.com/iraq/sulaymaniyah/pharmacies" },
 
-        <div style="text-align:center; margin-top:35px;">
-            <a href="ministers.html" class="btn btn-primary">
-                العودة إلى الوزارات والمؤسسات
-            </a>
-        </div>
+    // Halabja: facilities named by the KRG health service directory.
+    { district: "مركز حلبجة", name: "مستشفى حلبجة الشهيدة", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى عام", map: "Halabja Martyr Hospital", website: "https://services.gov.krd/ar/service/ku-75" },
+    { district: "مركز حلبجة", name: "مستشفى الشهيد شوكت حاجي مشير", kind: "مستشفى حكومي", category: "publicHospital", specialty: "مستشفى عام", map: "Shahid Shawkət Haji Mushir Hospital, Halabja", website: "https://services.gov.krd/ar/service/ku-75" },
+    { district: "مركز حلبجة", name: "مستشفى الولادة والأطفال", kind: "مستشفى حكومي", category: "publicHospital", specialty: "النسائية والأطفال", map: "Maternity and Children Hospital, Halabja", website: "https://services.gov.krd/ar/service/ku-75" },
+    { district: "مركز حلبجة", name: "مستشفى حلبجة للطوارئ", kind: "مستشفى حكومي", category: "publicHospital", specialty: "الطوارئ", map: "Halabja Emergency Hospital" },
+    { district: "مركز حلبجة", name: "صيدلية هاڤین", kind: "صيدلية", category: "pharmacy", specialty: "وسط السوق، مقابل مسجد دار الإحسان", hours: "يومياً، بحسب دليل الأعمال المنشور", phone: "+9647501484179", map: "Havin Pharmacy, Halabja", website: "https://yellowpages-ar.cybo.com/IQ-biz/havin-pharmacy-%D8%AF%DB%95%D8%B1%D9%85%D8%A7%D9%86%Dخان%DB%95%DB%8C-%Dهاڤ%DB%8C%D9%86" },
+    { district: "مركز حلبجة", name: "صيدلية حلبجة", kind: "صيدلية", category: "pharmacy", specialty: "داخل مدينة حلبجة", phone: "+9647503075519", map: "Halabja Pharmacy, Halabja", website: "https://www.bizmideast.com/IQ/halabja-pharmacy-0750-307-5519" },
+    { district: "مركز حلبجة", name: "صيدلية فَي", kind: "صيدلية", category: "pharmacy", specialty: "شارع الثرثار", phone: "+9647808888026", map: "Fay Pharmacy, Halabja, Tharthar Street", website: "https://qaymny.com/b/sydlya-fy-hlbja" }
+];
 
-    </div>
-</section>
+const healthUi = {
+    ar: { site: "بوابة حكومة إقليم كوردستان", home: "الرئيسية", services: "الخدمات الإلكترونية", institutions: "الوزارات والمؤسسات", about: "عن البوابة", eyebrow: "دليل المؤسسات الصحية", ministry: "وزارة الصحة", intro: "اختَر مكانك حتى تشوف المستشفيات والمراكز والجهات الصحية القريبة منك.", finder: "ابحث حسب موقعك", question: "وين تريد تبحث؟", governorate: "المحافظة", district: "القضاء", chooseGovernorate: "اختَر المحافظة", chooseDistrict: "اختَر القضاء", chooseFirst: "اختَر المحافظة أولاً", duhok: "دهوك", erbil: "أربيل", sulaymaniyah: "السليمانية", halabja: "حلبجة", filterLabel: "نوع المكان", all: "الكل", publicHospital: "مستشفيات حكومية", privateHospital: "مستشفيات أهلية", clinic: "عيادات ومراكز تخصصية", pharmacy: "صيدليات", pharmacy24: "صيدليات 24 ساعة", hourLabel: "دوام الصيدلية", hours: "مواعيد العمل المنشورة", phone: "اتصال", hint: "بعد اختيار القضاء، راح تظهر المؤسسات الصحية المدرجة للموقع.", institutionsIn: "المؤسسات الصحية في ", subtitle: "اختَر مستشفى أو مركزاً لفتح موقعه على الخريطة.", places: "أماكن", empty: "ماكو مؤسسات مضافة لهذا القضاء حالياً.", source: "تصفّح دليل صحة دهوك الرسمي للمرافق والخريطة ←", details: "المصدر والتفاصيل ↗", map: "افتح الموقع على الخريطة ↗", moreMap: "شوف نتائج أكثر على الخريطة ←", footer1: "دليل تعريفي ضمن مشروع تعليمي تجريبي.", footer2: "روابط الخرائط تفتح بحثاً عن موقع المؤسسة في Google Maps.", footer3: "القائمة مختارة وليست شاملة؛ تحقق هاتفياً من العنوان والدوام قبل الزيارة." },
+    en: { site: "Kurdistan Region Government Portal", home: "Home", services: "Online Services", institutions: "Ministries & Institutions", about: "About", eyebrow: "Health Facility Directory", ministry: "Ministry of Health", intro: "Choose a location to find nearby hospitals, centers, and health offices.", finder: "Search by location", question: "Where do you want to search?", governorate: "Governorate", district: "District", chooseGovernorate: "Choose a governorate", chooseDistrict: "Choose a district", chooseFirst: "Choose a governorate first", duhok: "Duhok", erbil: "Erbil", sulaymaniyah: "Sulaymaniyah", halabja: "Halabja", filterLabel: "Facility type", all: "All", publicHospital: "Public hospitals", privateHospital: "Private hospitals", clinic: "Clinics & specialized centers", pharmacy: "Pharmacies", pharmacy24: "24-hour pharmacies", hourLabel: "Pharmacy hours", hours: "Published hours", phone: "Call", hint: "Choose a district to see the health facilities listed for that area.", institutionsIn: "Health facilities in ", subtitle: "Choose a hospital or center to open its map location.", places: "places", empty: "No facilities match this category in the selected district yet.", source: "Browse the official Duhok Health facility map ←", details: "Source and details ↗", map: "Open map location ↗", moreMap: "See more results on the map ←", footer1: "An informational directory for an educational project demo.", footer2: "Map links open the facility search in Google Maps.", footer3: "This is a selected, non-exhaustive list. Call ahead to confirm the address and hours." },
+    ku: { site: "دەروازەی حکومەتی هەرێمی کوردستان", home: "سەرەتا", services: "خزمەتگوزارییە ئەلیکترۆنییەکان", institutions: "وەزارەت و دامەزراوەکان", about: "دەربارەی دەروازە", eyebrow: "بەڵگەنامەی دامەزراوە تەندروستییەکان", ministry: "وەزارەتی تەندروستی", intro: "شوێنەکەت هەڵبژێرە بۆ بینینی نەخۆشخانە و ناوەندە تەندروستییەکانی نزیکت.", finder: "گەڕان بەپێی شوێن", question: "لە کوێ دەگەڕێیت؟", governorate: "پارێزگا", district: "قەزا", chooseGovernorate: "پارێزگا هەڵبژێرە", chooseDistrict: "قەزا هەڵبژێرە", chooseFirst: "سەرەتا پارێزگا هەڵبژێرە", duhok: "دهۆک", erbil: "هەولێر", sulaymaniyah: "سلێمانی", halabja: "هەڵەبجە", filterLabel: "جۆری شوێن", all: "هەمووی", publicHospital: "نەخۆشخانەی حکومی", privateHospital: "نەخۆشخانەی ئەهلی", clinic: "کلینیک و ناوەندی پسپۆڕی", pharmacy: "دەرمانخانەکان", pharmacy24: "دەرمانخانەی ٢٤ کاتژمێری", hourLabel: "کاتی کارکردنی دەرمانخانە", hours: "کاتژمێری بڵاوکراوە", phone: "پەیوەندی", hint: "دوای هەڵبژاردنی قەزا، دامەزراوە تەندروستییە تۆمارکراوەکانی ئەو ناوچەیە دەردەکەون.", institutionsIn: "دامەزراوە تەندروستییەکان لە ", subtitle: "نەخۆشخانە یان ناوەندێک هەڵبژێرە بۆ کردنەوەی شوێنەکە لەسەر نەخشە.", places: "شوێن", empty: "هێشتا هیچ دامەزراوەیەک لەم جۆرە بۆ ئەم قەزایە زیاد نەکراوە.", source: "بینینی نەخشە و بەڵگەنامەی فەرمی تەندروستیی دهۆک ←", details: "سەرچاوە و وردەکاری ↗", map: "کردنەوەی شوێن لەسەر نەخشە ↗", moreMap: "بینینی شوێنە زیاترەکان لەسەر نەخشە ←", footer1: "بەڵگەنامەیەکی ناساندن بۆ پرۆژەیەکی فێرکاری.", footer2: "بەستەرەکانی نەخشە گەڕان بۆ دامەزراوەکە لە Google Maps دەکەن.", footer3: "ئەمە لیستێکی هەڵبژێردراوە و گشتگیر نییە؛ پێش سەردان کردن بە تەلەفۆن شوێن و کاتژمێری کارکردن پشتڕاست بکەرەوە." }
+};
+const placeTranslations = {
+    "مستشفى حكومي": ["Public hospital", "نەخۆشخانەی حکومی"], "مستشفى أهلي": ["Private hospital", "نەخۆشخانەی ئەهلی"], "صيدلية": ["Pharmacy", "دەرمانخانە"], "صيدلية 24 ساعة": ["24-hour pharmacy", "دەرمانخانەی ٢٤ کاتژمێری"],
+    "مستشفى الجمهوري": ["Republic Hospital", "نەخۆشخانەی کۆماری"], "مستشفى الولادة": ["Maternity Hospital", "نەخۆشخانەی منداڵبوون"], "مستشفى الطوارئ الغربي": ["West Emergency Hospital", "نەخۆشخانەی فریاکەوتنی ڕۆژئاوا"], "مستشفى الطوارئ المركزي": ["Central Emergency Hospital", "نەخۆشخانەی فریاکەوتنی ناوەند"], "مستشفى الطوارئ الشرقي": ["East Emergency Hospital", "نەخۆشخانەی فریاکەوتنی ڕۆژهەڵات"], "مستشفى رابرين للأطفال": ["Raparin Pediatric Hospital", "نەخۆشخانەی منداڵانی ڕاپەڕین"], "مستشفى زانياري": ["Zaniari Hospital", "نەخۆشخانەی زانیاری"], "مستشفى نانكلي": ["Nanakali Hospital", "نەخۆشخانەی نانەکەلی"], "مستشفى بار الأهلي": ["Par Private Hospital", "نەخۆشخانەی ئەهلیی پار"], "مستشفى زين الأهلي": ["Zheen Private Hospital", "نەخۆشخانەی ئەهلیی ژین"], "مستشفى شيفا الأهلي": ["Shifa Private Hospital", "نەخۆشخانەی ئەهلیی شفا"], "مستشفى رزكاري التعليمي": ["Rizgary Teaching Hospital", "نەخۆشخانەی فێرکاریی ڕزگاری"],
+    "صيدلية دالاني برياتي": ["Dalany Brayati Pharmacy", "دەرمانخانەی دالانی برایەتی"], "صيدلية دالاني رزكاري": ["Dalany Rizgari Pharmacy", "دەرمانخانەی دالانی ڕزگاری"], "صيدلية دالاني زانكو": ["Dalany Zanko Pharmacy", "دەرمانخانەی دالانی زانکۆ"], "صيدلية ياس - شارع 60 متر": ["Yas Pharmacy - 60m Street", "دەرمانخانەی یاس - شەقامی ٦٠ مەتر"], "صيدلية ياس - عنكاوا": ["Yas Pharmacy - Ankawa", "دەرمانخانەی یاس - عەنکاوە"], "صيدلية سرواران - فرمانبران": ["Sarwaran Pharmacy - Farmanbaran", "دەرمانخانەی سەروەران - فەرمانبەران"],
+    "مستشفى شار التعليمي": ["Shar Teaching Hospital", "نەخۆشخانەی فێرکاریی شار"], "مستشفى السليمانية التعليمي": ["Sulaymaniyah Teaching Hospital", "نەخۆشخانەی فێرکاریی سلێمانی"], "مستشفى أمراض القلب": ["Heart Disease Hospital", "نەخۆشخانەی نەخۆشیی دڵ"], "مستشفى الحروق والجراحة التجميلية": ["Burns and Cosmetic Surgery Hospital", "نەخۆشخانەی سووتان و نەشتەرگەریی جوانکاری"], "مستشفى الأمراض الباطنية": ["Internal Medicine Hospital", "نەخۆشخانەی نەخۆشیی ناوەوە"], "مستشفى الشهيد الدكتور هيمن": ["Shahid Dr. Hemen Hospital", "نەخۆشخانەی شەهید د. هێمن"], "مستشفى الدكتور جمال أحمد رشيد للأطفال": ["Dr. Jamal Ahmad Rashid Pediatric Hospital", "نەخۆشخانەی منداڵانی د. جەمال ئەحمەد ڕەشید"], "مستشفى هيوا للأورام": ["Hiwa Cancer Hospital", "نەخۆشخانەی شێرپەنجەی هیوا"], "مستشفى شورش للأمراض النفسية": ["Shorsh Mental Health Hospital", "نەخۆشخانەی دەروونیی شۆڕش"], "صيدلية ميلينيوم": ["Millennium Pharmacy", "دەرمانخانەی میلینیۆم"], "صيدلية مسلم": ["Muslim Pharmacy", "دەرمانخانەی موسلیم"], "صيدلية نەسیم": ["Nasem Pharmacy", "دەرمانخانەی نەسیم"], "صيدلية دایک": ["Daik Pharmacy", "دەرمانخانەی دایک"],
+    "مستشفى حلبجة الشهيدة": ["Halabja Martyr Hospital", "نەخۆشخانەی شەهیدەی هەڵەبجە"], "مستشفى الشهيد شوكت حاجي مشير": ["Shahid Shawkat Haji Mushir Hospital", "نەخۆشخانەی شەهید شەوکەت حاجی موشیر"], "مستشفى الولادة والأطفال": ["Maternity and Children Hospital", "نەخۆشخانەی منداڵبوون و منداڵان"], "مستشفى حلبجة للطوارئ": ["Halabja Emergency Hospital", "نەخۆشخانەی فریاکەوتنی هەڵەبجە"], "صيدلية هاڤین": ["Havin Pharmacy", "دەرمانخانەی هاڤین"], "صيدلية حلبجة": ["Halabja Pharmacy", "دەرمانخانەی هەڵەبجە"], "صيدلية فَي": ["Fay Pharmacy", "دەرمانخانەی فەی"],
+    "صيدلية ڤاری": ["Vari Pharmacy", "دەرمانخانەی ڤاری"], "صيدلية آوات": ["Awaat Pharmacy", "دەرمانخانەی ئاوات"], "صيدلية بلال": ["Bilal Pharmacy", "دەرمانخانەی بیلال"], "صيدلية آدم": ["Adam Pharmacy", "دەرمانخانەی ئادەم"], "صيدلية ميدلاين": ["Medline Pharmacy", "دەرمانخانەی میدلاین"], "صيدلية زارا": ["Zara Pharmacy", "دەرمانخانەی زارا"], "صيدلية كاسو": ["Kaso Pharmacy", "دەرمانخانەی کاسۆ"],
+    "مستشفى عام": ["General hospital", "نەخۆشخانەی گشتی"], "مستشفى تخصصي": ["Specialty hospital", "نەخۆشخانەی پسپۆڕی"], "مفتوحة 24 ساعة بحسب بيانات الصيدلية المنشورة": ["Listed as open 24 hours", "بەپێی زانیاریی بڵاوکراوە، ٢٤ کاتژمێر کراوەیە"], "24/7": ["24/7", "٢٤ کاتژمێر"], "شارع 100 متر، مقابل مستشفى رزكاري": ["100m Street, opposite Rizgary Hospital", "شەقامی ١٠٠ مەتر، بەرامبەر نەخۆشخانەی ڕزگاری"], "حي برياتي، مقابل حديقة برياتي": ["Brayati, opposite Brayati Park", "برایەتی، بەرامبەر باخی برایەتی"],
+    "مستشفى شيريان": ["Shiryan Hospital", "نەخۆشخانەی شیریان"], "مستشفى ڤەژین الأهلي": ["Vajeen Private Hospital", "نەخۆشخانەی ئەهلی ڤەژین"], "مستشفى Wan Global الأهلي": ["Wan Global Private Hospital", "نەخۆشخانەی ئەهلی وان گڵۆباڵ"], "مستشفى شيلان الأهلي": ["Shilan Private Hospital", "نەخۆشخانەی ئەهلی شیلان"], "مستشفى كوردستان الأهلي": ["Kurdistan Private Hospital", "نەخۆشخانەی ئەهلی کوردستان"], "مستشفى آيندة الأهلي": ["Ayenda Private Hospital", "نەخۆشخانەی ئەهلی ئایندە"], "مستشفى دهوك للنسائية والتوليد التعليمي": ["Duhok Obstetrics and Gynecology Teaching Hospital", "نەخۆشخانەی فێرکاریی ژنان و منداڵبوونی دهۆک"],
+    "مركز الروماتيزم والتأهيل الطبي": ["Rheumatology and Medical Rehabilitation Center", "ناوەندی ڕۆماتیزم و چاکسازیی پزیشکی"], "مركز ژين لأمراض دم وسرطان الأطفال": ["Zhin Pediatric Hematoncology Center", "ناوەندی ژین بۆ نەخۆشیی خوێن و شێرپەنجەی منداڵان"], "مركز الكشف المبكر عن إعاقة الأطفال": ["Early Detection of Childhood Disability Center", "ناوەندی زوو دۆزینەوەی کەمئەندامیی منداڵان"],
+    "النسائية والتوليد": ["Obstetrics and gynecology", "ژنان و منداڵبوون"], "الروماتيزم والتأهيل": ["Rheumatology and rehabilitation", "ڕۆماتیزم و چاکسازی"], "أمراض الدم وسرطان الأطفال": ["Pediatric blood disorders and cancer", "نەخۆشیی خوێن و شێرپەنجەی منداڵان"], "الكشف المبكر والتأهيل": ["Early detection and rehabilitation", "زوو دۆزینەوە و چاکسازی"], "النسائية والأطفال والطب العام": ["Maternity, pediatrics, and general medicine", "ژنان، منداڵان و پزیشکی گشتی"], "مفتوحة يومياً حتى 4:00 فجراً": ["Open daily until 4:00 AM", "هەموو ڕۆژێک تا ٤ی بەیانی کراوەیە"], "مفتوحة 24 ساعة بحسب بيانات الصيدلية المنشورة": ["Listed as open 24 hours", "بەپێی زانیاریی بڵاوکراوە، ٢٤ کاتژمێر کراوەیە"], "ساعات العمل تختلف حسب اليوم": ["Hours vary by day", "کاتی کارکردن بەپێی ڕۆژ دەگۆڕێت"],
+    "صيدلية هەناسە": ["Hanasa Pharmacy", "دەرمانخانەی هەناسە"], "صيدلية تايم": ["Time Pharmacy", "دەرمانخانەی تایم"], "صيدلية جودي": ["Jody Pharmacy", "دەرمانخانەی جۆدی"], "2:00 PM–4:00 AM daily": ["Daily, 2:00 PM–4:00 AM", "هەموو ڕۆژێک، ٢ی دوای نیوەڕۆ تا ٤ی بەیانی"], "24 hours": ["24 hours", "٢٤ کاتژمێر"], "Hours vary by day": ["Hours vary by day", "کاتی کارکردن بەپێی ڕۆژ دەگۆڕێت"],
+    "مركز دهوك": ["Duhok Center", "ناوەندی دهۆک"], "دهوك": ["Duhok", "دهۆک"], "عقرة": ["Akre", "ئاکرێ"], "بردرش": ["Bardarash", "بەردەڕەش"], "زاخو": ["Zakho", "زاخۆ"], "سميل": ["Sumel", "سێمەڵ"], "شيخان": ["Shekhan", "شێخان"], "العمادية": ["Amadiya", "ئامێدی"], "مانكيش": ["Mangesh", "مانگێش"],
+    "مركز أربيل": ["Erbil Center", "ناوەندی هەولێر"], "جومان": ["Joman", "چۆمان"], "خبات": ["Khabat", "خەبات"], "رواندوز": ["Rawanduz", "ڕەواندز"], "سوران": ["Soran", "سۆران"], "شقلاوة": ["Shaqlawa", "شەقڵاوە"], "كوية": ["Koya", "کۆیە"], "مخمور": ["Makhmur", "مەخمور"], "ميركةسور": ["Mergasor", "میرگەسۆر"], "چومان": ["Choman", "چۆمان"], "عنكاوا": ["Ankawa", "عەنکاوە"], "عينكاوا": ["Ainkawa", "عەنکاوە"], "حرير": ["Harir", "هەریر"], "بالكايتي": ["Balkayati", "بالەکایەتی"], "سيدكان": ["Sidakan", "سیدەکان"], "ديانا": ["Diana", "دیانا"], "بحركة": ["Bahrka", "بەحرکە"], "قوشتبة": ["Qushtapa", "قوشتەپە"],
+    "مركز السليمانية": ["Sulaymaniyah Center", "ناوەندی سلێمانی"], "بشدر": ["Pshdar", "پشدەر"], "بنجوين": ["Penjwen", "پێنجوێن"], "جمجمال": ["Chamchamal", "چەمچەماڵ"], "دربنديخان": ["Darbandikhan", "دەربەندیخان"], "دوكان": ["Dukan", "دوکان"], "كلار": ["Kalar", "کەلار"], "كفري": ["Kifri", "کفری"], "ماوت": ["Mawat", "ماوەت"], "قرداغ": ["Qaradagh", "قەرەداغ"], "رانية": ["Ranya", "ڕانیە"], "سيد صادق": ["Said Sadiq", "سەیدسادق"], "شاربازير": ["Sharbazher", "شارباژێر"], "شهرزور": ["Sharazur", "شارەزوور"], "قلعة دزة": ["Qaladiza", "قەڵادزێ"], "تكية": ["Takiya", "تەکیە"], "رزگاري": ["Rzgari", "ڕزگاری"],
+    "مركز حلبجة": ["Halabja Center", "ناوەندی هەڵەبجە"], "خورمال": ["Khormal", "خورماڵ"],
+    "مستشفى": ["Hospital", "نەخۆشخانە"], "مركز تخصصي": ["Specialized center", "ناوەندی پسپۆڕی"],
+    "مستشفى آزادي التعليمي": ["Azadi Teaching Hospital", "نەخۆشخانەی فێرکاریی ئازادی"], "مستشفى طوارئ دهوك التعليمي": ["Duhok Emergency Teaching Hospital", "نەخۆشخانەی فێرکاریی فریاکەوتنی دهۆک"], "مستشفى هيفي للأطفال التعليمي": ["Heevi Pediatric Teaching Hospital", "نەخۆشخانەی فێرکاریی منداڵانی هێڤی"], "مستشفى گولان العام": ["Gulan General Hospital", "نەخۆشخانەی گشتیی گولان"], "مستشفى روزانا": ["Rozana Hospital", "نەخۆشخانەی ڕۆزانا"], "مستشفى الحروق والجراحة الترميمية": ["Burns and Reconstructive Surgery Hospital", "نەخۆشخانەی سووتان و نەشتەرگەریی چاکسازی"], "مستشفى العيون في دهوك": ["Duhok Eye Hospital", "نەخۆشخانەی چاو لە دهۆک"], "مركز آزادي لأمراض الجهاز الهضمي والكبد": ["Azadi Gastroenterology and Hepatology Center", "ناوەندی ئازادی بۆ نەخۆشییەکانی گەدە و جگەر"], "مستشفى الطوارئ والولادة في عقرة": ["Akre Emergency and Obstetrics Hospital", "نەخۆشخانەی فریاکەوتن و منداڵبوونی ئاکرێ"], "مستشفى صديق الأم والطفل في العمادية": ["Amadiya Baby Friendly Hospital", "نەخۆشخانەی دۆستی دایک و منداڵ لە ئامێدی"], "مستشفى تعليمي": ["Teaching hospital", "نەخۆشخانەی فێرکاری"], "الطوارئ": ["Emergency care", "فریاکەوتن"], "الأطفال": ["Pediatrics", "پزیشکی منداڵان"], "مستشفى عام": ["General hospital", "نەخۆشخانەی گشتی"], "الحروق والجراحة الترميمية": ["Burns and reconstructive surgery", "سووتان و نەشتەرگەریی چاکسازی"], "العيون": ["Eye care", "چاودێریی چاو"], "الجهاز الهضمي والكبد": ["Gastroenterology and hepatology", "نەخۆشییەکانی گەدە و جگەر"], "الطوارئ والولادة": ["Emergency and obstetrics", "فریاکەوتن و منداڵبوون"], "رعاية الأم والطفل": ["Mother and child care", "چاودێریی دایک و منداڵ"]
+};
+let healthLanguage = localStorage.getItem("preferredLanguage") || "ar";
+function healthText(value) {
+    if (healthLanguage === "ar") return value;
+    const pair = placeTranslations[value];
+    return pair ? pair[healthLanguage === "en" ? 0 : 1] : value;
+}
+function updateHealthLanguage(language) {
+    healthLanguage = healthUi[language] ? language : "ar";
+    const text = healthUi[healthLanguage];
+    document.title = text.ministry + " | " + text.site;
+    const labels = { siteName: text.site, navHome: text.home, navServices: text.services, navInstitutions: text.institutions, navAbout: text.about, healthEyebrow: text.eyebrow, healthTitle: text.ministry, healthIntro: text.intro, finderEyebrow: text.finder, finderTitle: text.question, governorateLabel: text.governorate, districtLabel: text.district, finderHint: text.hint, emptyMessage: text.empty, officialDirectory: text.source, footerLine1: text.footer1, footerLine2: text.footer2, footerLine3: text.footer3, facilityTypeLabel: text.filterLabel, mapSearchAll: text.moreMap };
+    Object.keys(labels).forEach(function (id) { document.getElementById(id).textContent = labels[id]; });
+    document.querySelectorAll("[data-health-option]").forEach(function (option) { option.textContent = text[option.dataset.healthOption]; });
+    document.querySelectorAll("[data-filter-label]").forEach(function (option) { option.textContent = text[option.dataset.filterLabel]; });
+    Array.from(districtSelect.options).forEach(function (option) {
+        if (option.value) option.textContent = healthText(option.value);
+        else option.textContent = districtSelect.disabled ? text.chooseFirst : text.chooseDistrict;
+    });
+    if (districtSelect.value) districtSelect.dispatchEvent(new Event("change"));
+}
 
-<footer class="footer">
-    <div class="container">
-        <p>بوابة الحكومة الإلكترونية - إقليم كوردستان</p>
-        <p>نسخة تجريبية لمشروع تعليمي وليست بوابة حكومية رسمية.</p>
-    </div>
-</footer>
+const governorateSelect = document.getElementById("governorateSelect");
+const districtSelect = document.getElementById("districtSelect");
+const facilityArea = document.getElementById("facilityArea");
+const facilityGrid = document.getElementById("facilityGrid");
+const officialDirectory = document.getElementById("officialDirectory");
+const mapSearchAll = document.getElementById("mapSearchAll");
 
+function renderFacilities() {
+    if (!districtSelect.value) return;
+    const selected = districtSelect.value;
+    const text = healthUi[healthLanguage];
+    const chosenType = document.getElementById("facilityType").value;
+    const found = facilities.filter(function (facility) {
+        if (facility.district !== selected) return false;
+        if (chosenType === "all") return true;
+        if (chosenType === "pharmacy") return facility.category === "pharmacy" || facility.category === "pharmacy24";
+        return facility.category === chosenType;
+    });
+    document.getElementById("resultsTitle").textContent = text.institutionsIn + healthText(selected);
+    document.getElementById("resultsSubtitle").textContent = text.subtitle;
+    document.getElementById("resultCount").textContent = found.length + " " + text.places;
+    document.getElementById("emptyMessage").hidden = found.length > 0;
+    officialDirectory.hidden = governorateSelect.value !== "duhok";
+    const searchTerm = chosenType === "pharmacy24" ? "24 hour pharmacy" : chosenType === "pharmacy" ? "pharmacy" : chosenType === "privateHospital" ? "private hospital" : chosenType === "publicHospital" ? "public hospital" : chosenType === "clinic" ? "clinic health center" : "hospital pharmacy clinic health center";
+    const governorateName = healthText(governorateSelect.options[governorateSelect.selectedIndex].textContent);
+    mapSearchAll.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(searchTerm + " " + selected + " " + governorateName);
+    mapSearchAll.hidden = false;
+    facilityGrid.replaceChildren();
+
+    found.forEach(function (facility) {
+        const card = document.createElement("article");
+        card.className = "card facility-card";
+        const icon = document.createElement("span"); icon.className = "facility-icon"; icon.textContent = facility.category.includes("Hospital") ? "🏥" : facility.category.includes("pharmacy") ? "💊" : "🩺";
+        const kind = document.createElement("span"); kind.className = "facility-kind"; kind.textContent = healthText(facility.kind);
+        if (facility.category === "pharmacy24") { kind.classList.add("always-open"); }
+        const title = document.createElement("h3"); title.textContent = healthText(facility.name);
+        const district = document.createElement("p"); district.className = "facility-district"; district.textContent = "📍 " + healthText(facility.district);
+        const specialty = document.createElement("p"); specialty.className = "facility-specialty"; specialty.textContent = healthText(facility.specialty);
+        card.append(icon, kind, title, district, specialty);
+        if (facility.phone) {
+            const phone = document.createElement("a"); phone.className = "facility-source"; phone.href = "tel:" + facility.phone.replace(/[^+\d]/g, ""); phone.textContent = text.phone + ": " + facility.phone;
+            card.appendChild(phone);
+        }
+        if (facility.hours) {
+            const hours = document.createElement("p"); hours.className = "facility-hours";
+            const hoursLabel = document.createElement("strong"); hoursLabel.textContent = text.hourLabel + ": ";
+            hours.append(hoursLabel, document.createTextNode(healthText(facility.hours)));
+            card.appendChild(hours);
+        }
+        const map = document.createElement("a"); map.className = "map-button"; map.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(facility.map); map.target = "_blank"; map.rel = "noopener noreferrer"; map.textContent = text.map;
+        card.appendChild(map);
+        if (facility.website) { const source = document.createElement("a"); source.className = "facility-source"; source.href = facility.website; source.target = "_blank"; source.rel = "noopener noreferrer"; source.textContent = text.details; card.appendChild(source); }
+        facilityGrid.appendChild(card);
+    });
+}
+
+governorateSelect.addEventListener("change", function () {
+    const choices = districts[this.value] || [];
+    document.getElementById("facilityType").value = "all";
+    districtSelect.innerHTML = '<option value="">' + healthUi[healthLanguage].chooseDistrict + '</option>';
+    choices.forEach(function (district) {
+        const option = document.createElement("option");
+        option.value = district;
+        option.textContent = healthText(district);
+        districtSelect.appendChild(option);
+    });
+    districtSelect.disabled = choices.length === 0;
+    facilityArea.hidden = true;
+});
+
+districtSelect.addEventListener("change", function () {
+    if (!this.value) { facilityArea.hidden = true; return; }
+    facilityArea.hidden = false;
+    renderFacilities();
+});
+
+document.getElementById("facilityType").addEventListener("change", renderFacilities);
+
+document.querySelector(".language-select").addEventListener("change", function () { updateHealthLanguage(this.value); });
+document.addEventListener("DOMContentLoaded", function () { updateHealthLanguage(localStorage.getItem("preferredLanguage") || "ar"); });
+</script>
 </body>
 </html>

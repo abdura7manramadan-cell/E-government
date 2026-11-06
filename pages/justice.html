@@ -28,6 +28,7 @@ body{margin:0;background:#f4f7fb;font-family:Arial,sans-serif;color:#263445}
 .card h3{color:#173b5e;margin:0 0 13px;font-size:19px}
 .card p{line-height:1.9;color:#586577;margin:0}
 .tag{display:inline-block;background:#e9f2f8;color:#176b87;padding:5px 10px;border-radius:20px;font-size:12px;margin-bottom:12px}
+.justice-art{display:block;width:72px;height:72px;margin:0 0 16px;padding:10px;border-radius:16px;background:#eaf2f6;color:#176b87}.justice-art.gold{background:#fbf4e4;color:#a67820}.justice-art.rose{background:#f7ebee;color:#9c5365}.notary-boundary{background:#fff7e5;border-inline-start:4px solid #c99728;border-radius:8px;padding:15px 18px;line-height:1.9;color:#4b596b;margin:0 0 22px}
 .details{margin-top:25px}
 .details summary{cursor:pointer;color:#176b87;font-weight:bold;padding:10px 0}
 .requirements{background:white;padding:25px;border-radius:12px;line-height:2.1}
@@ -143,6 +144,7 @@ body{background:white}
 <div class="container">
 <h2 class="section-title" data-key="notary">دوائر الكتاب العدول</h2>
 <p class="section-intro" data-key="notaryIntro">خدمات تنظيم وتصديق الوثائق والإقرارات والوكالات القانونية.</p>
+<p class="notary-boundary" data-key="notaryBoundary">الكاتب العدل يوثق الوكالات والإقرارات والتعهدات القانونية؛ وثائق الأحوال المدنية والهوية الشخصية ليست من هذه المعاملات.</p>
 <div class="grid">
 <div class="card"><h3 data-key="agencies">تنظيم الوكالات</h3><p data-key="agenciesDesc">تنظيم الوكالات العامة والخاصة وفق الضوابط القانونية.</p></div>
 <div class="card"><h3 data-key="declarations">تصديق الإقرارات</h3><p data-key="declarationsDesc">تنظيم وتصديق الإقرارات والتعهدات القانونية.</p></div>
@@ -206,10 +208,10 @@ body{background:white}
 <div class="container">
 <h2 class="section-title" data-key="justiceServices">الخدمات العدلية</h2>
 <div class="grid">
-<div class="card"><h3 data-key="propertyService">التسجيل العقاري</h3><p data-key="propertyServiceDesc">خدمات معاملات العقارات وتسجيل الملكية ونقلها.</p></div>
-<div class="card"><h3 data-key="agencyService">الوكالات القانونية</h3><p data-key="agencyServiceDesc">تنظيم وتصديق الوكالات لدى دوائر الكاتب العدل.</p></div>
-<div class="card"><h3 data-key="executionService">خدمات التنفيذ</h3><p data-key="executionServiceDesc">متابعة الطلبات والإجراءات التنفيذية.</p></div>
-<div class="card"><h3 data-key="minorsService">شؤون القاصرين</h3><p data-key="minorsServiceDesc">متابعة المعاملات المتعلقة بأموال وحقوق القاصرين.</p></div>
+<div class="card"><svg class="justice-art" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 28 32 9l24 19M15 27v27h34V27M25 54V38h14v16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 29h18M26 34h12" stroke="#c99728" stroke-width="3" stroke-linecap="round"/></svg><h3 data-key="propertyService">التسجيل العقاري</h3><p data-key="propertyServiceDesc">خدمات معاملات العقارات وتسجيل الملكية ونقلها.</p></div>
+<div class="card"><svg class="justice-art gold" viewBox="0 0 64 64" aria-hidden="true"><path d="M17 8h22l10 10v38H17zM39 8v12h10M24 31h18M24 39h12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m38 47 10-11 5 5-11 10-7 2z" fill="none" stroke="#176b87" stroke-width="3" stroke-linejoin="round"/></svg><h3 data-key="agencyService">الوكالات القانونية</h3><p data-key="agencyServiceDesc">تنظيم وتصديق الوكالات لدى دوائر الكاتب العدل.</p></div>
+<div class="card"><svg class="justice-art rose" viewBox="0 0 64 64" aria-hidden="true"><path d="m22 13 11 11-7 7-11-11zM34 25l10 10M21 34l10 10M12 48h23M42 13l9 9-6 6-9-9z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 44 42 55M42 44 31 55" stroke="#c99728" stroke-width="3" stroke-linecap="round"/></svg><h3 data-key="executionService">خدمات التنفيذ</h3><p data-key="executionServiceDesc">متابعة الطلبات والإجراءات التنفيذية.</p></div>
+<div class="card"><svg class="justice-art" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 51 15v15c0 12-8 20-19 26C21 50 13 42 13 30V15z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="27" r="6" fill="none" stroke="#c99728" stroke-width="3"/><path d="M21 43c2-7 7-10 11-10s9 3 11 10" fill="none" stroke="#c99728" stroke-width="3" stroke-linecap="round"/></svg><h3 data-key="minorsService">شؤون القاصرين</h3><p data-key="minorsServiceDesc">متابعة المعاملات المتعلقة بأموال وحقوق القاصرين.</p></div>
 </div>
 </div>
 </section>
@@ -385,6 +387,9 @@ warning:"Important Notice:",warningText:"This website is an educational demonstr
 requiredName:"Full Name",requiredPhone:"Phone Number",requiredCity:"Governorate",requiredDepartment:"Relevant Department",requiredService:"Service Type",created:"Demo request created successfully",requestNumber:"Request Number",nameLabel:"Name",phoneLabel:"Phone",cityLabel:"Governorate",departmentLabel:"Department",serviceLabel:"Service",propertyLabel:"Property Type",detailsLabel:"Details",noDetails:"No details entered",demoNumber:"This is a demonstration number, not a real government transaction number.",print:"Print Request Summary",fill:"Please complete: "
 }
 };
+words.ar.notaryBoundary="الكاتب العدل يوثق الوكالات والإقرارات والتعهدات القانونية؛ وثائق الأحوال المدنية والهوية الشخصية ليست من هذه المعاملات.";
+words.ku.notaryBoundary="نووسەری داد نوێنەرایەتی و دانپێدانان و پابەندیی یاسایی پشتڕاست دەکاتەوە؛ بەڵگەنامەی باری مەدەنی و ناسنامە لەم مامەڵانە نین.";
+words.en.notaryBoundary="Notary offices authenticate powers of attorney, declarations, and legal undertakings. Civil-status and personal identity documents are handled through separate services.";
 
 function applyLanguage(lang){
 const t=words[lang]||words.ar;
