@@ -1,4 +1,4 @@
-const VERSION='zeno-shell-v5';
+const VERSION='zeno-shell-v6';
 const asset=path=>new URL(path,self.registration.scope).href;
 const HOME=asset('index.html');
 const SHELL=['index.html','styles.css','polish.css','routing.css','app.js','manifest.webmanifest','icons/zeno-192.svg','icons/zeno-512.svg'].map(asset);

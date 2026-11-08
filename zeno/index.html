@@ -79,6 +79,16 @@
       <label class="consent-row"><input type="checkbox" id="sendConsent" required><span data-t="emailConsent">ڕازیم بە ناردنی وردەکاری و شوێن و هاوپێچەکانم بۆ بەڕێوەبەری Zeno.</span></label>
     </form>
   </dialog>
+  <dialog class="route-confirm-dialog" id="destinationDialog" aria-labelledby="destinationDialogTitle">
+    <div class="route-confirm-content">
+      <header class="dialog-head"><div><span class="overline" data-t="routePreview">پێشبینینی ڕێگا</span><h2 id="destinationDialogTitle" data-t="confirmTitle">دڵنیایت دەتەوێت بچیت بۆ ئەم شوێنە؟</h2></div><button class="close-button" type="button" id="dismissDestination" aria-label="Close">×</button></header>
+      <p class="confirm-place" id="confirmPlace">—</p>
+      <div class="confirm-stats"><div><b id="confirmDistance">—</b><small data-t="distance">دووری ڕێگا</small></div><div><b id="confirmEta">—</b><small data-t="arrival">ماوەی گەشت</small></div></div>
+      <section class="route-preview-section"><b data-t="knownIssues">بلاغات معروفة على المسار</b><p id="routeIssueSummary">—</p></section>
+      <ul class="route-data-limits"><li data-t="trafficFeedUnavailable">معلومات الازدحام الحي غير متوفرة.</li><li data-t="signalsFeedUnavailable">عدد إشارات المرور غير متوفر.</li><li data-t="camerasFeedUnavailable">لا توجد بيانات موثوقة عن كاميرات السرعة؛ التزم بالسرعة المحددة.</li></ul>
+      <div class="confirm-actions"><button id="cancelDestination" class="cancel-route" type="button" data-t="cancelDestination">رجوع</button><button id="confirmDestination" class="submit-report" type="button" data-t="confirmDestination">نعم، ابدأ الملاحة</button></div>
+    </div>
+  </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
