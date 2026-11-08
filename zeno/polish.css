@@ -1,0 +1,8 @@
+.entry-actions{grid-column:2/-1;display:flex;gap:6px;flex-wrap:wrap}
+.entry-actions button{padding:4px 7px;border:1px solid #ffffff12;border-radius:7px;background:#ffffff06;color:#67d8b3;font-size:8px}
+.entry-actions button:last-child{color:#d99b91}
+.report-entry{grid-template-columns:35px minmax(0,1fr);align-items:start}
+.report-entry>div:nth-child(2){min-width:0;overflow-wrap:anywhere}
+.report-entry small{line-height:1.5}
+.report-dialog[open]{animation:dialog-rise .18s ease-out}
+@keyframes dialog-rise{from{opacity:.65;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}

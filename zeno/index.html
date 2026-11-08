@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101b25">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Zeno helps drivers navigate and share road hazards across Kurdistan and Iraq.">
+  <title>Zeno — درێڤ</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/zeno.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/zeno-192.svg">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./polish.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#map" aria-label="Zeno"><span class="brand-mark">z</span><span>Zeno</span><i>DRIVE</i></a>
+      <div class="location-label"><span class="live-dot"></span><div><b id="cityLabel">هەولێر</b><small data-t="mapLive">نەخشەی ئێستا</small></div></div>
+      <div class="top-actions">
+        <nav class="language-switch" aria-label="Language"><button type="button" data-lang="ku" class="active">KU</button><button type="button" data-lang="ar">AR</button><button type="button" data-lang="en">EN</button></nav>
+        <button class="icon-button install-button" id="installApp" type="button" data-t="install">دامەزراندن</button>
+        <button class="avatar" type="button" aria-label="Profile">Z</button>
+      </div>
+    </header>
+
+    <section class="workspace" id="map">
+      <div class="map-area">
+        <div id="mapCanvas" aria-label="Interactive map"></div>
+        <div class="search-pill"><span>⌕</span><input id="searchText" type="search" data-placeholder="searchPlaceholder" placeholder="کوێ دەتەوێت بچیت؟" autocomplete="off"><button id="searchButton" data-t="search">گەڕان</button></div>
+        <div class="map-quick-filters"><button class="filter active" data-filter="traffic"><span>🚦</span><span data-t="traffic">هاتووچۆ</span></button><button class="filter active" data-filter="hazard"><span>⚠️</span><span data-t="hazards">مەترسییەکان</span></button></div>
+        <button class="locate-button" id="locateMe" type="button" aria-label="My location">⌖</button>
+        <button class="report-fab" id="openReport" type="button"><span>＋</span><span data-t="report">ئاگادارکردنەوە</span></button>
+        <div class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors</div>
+      </div>
+
+      <aside class="info-panel">
+        <section class="destination-card">
+          <div class="section-heading"><span data-t="destination">شوێنی مەبەست</span><span class="pill muted" data-t="demo">تاقیکاری</span></div>
+          <div class="destination"><span class="destination-icon">⌖</span><div><b id="destinationName" data-t="cityCenter">ناوەندی شار</b><small id="destinationHint" data-t="chooseDestination">نەخشەکە بکە بۆ دیاریکردنی مەبەست</small></div></div>
+          <div class="route-info"><div><b id="routeDistance">—</b><small data-t="distance">دووری</small></div><div><b id="routeEta">—</b><small data-t="arrival">کاتی گەیشتن</small></div><button id="clearRoute" type="button" data-t="clear">سڕینەوە</button></div>
+          <button class="start-button" id="startNavigation" type="button" data-t="start">دەستپێکردنی ڕێگا</button>
+        </section>
+        <section class="road-card">
+          <div class="section-heading"><b data-t="nearbyReports">ئاگادارکردنەوەی نزیک</b><button class="text-button" id="refreshReports" type="button" data-t="refresh">نوێکردنەوە</button></div>
+          <div id="reportList" class="report-list"><div class="empty-state"><span>✦</span><p data-t="noReports">ئاگادارکردنەوەکانت لێرە دەردەکەون</p></div></div>
+        </section>
+        <p class="local-note"><span>🔒</span><span data-t="localNote">لەوەشدا، ئاگادارکردنەوەکان تەنها لەم ئامێرەدا پاشەکەوت دەکرێن.</span></p>
+      </aside>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" data-view="map"><span>⌖</span><small data-t="navMap">نەخشە</small></button><button class="nav-item" data-view="reports"><span>◉</span><small data-t="navReports">ئاگادارکردنەوەکانم</small></button><button class="nav-item" data-view="settings"><span>⚙</span><small data-t="navSettings">ڕێکخستنەکان</small></button></nav>
+  </main>
+
+  <dialog class="report-dialog" id="reportDialog">
+    <form id="reportForm" method="dialog">
+      <header class="dialog-head"><div><span class="overline" data-t="newReport">ئاگادارکردنەوەی نوێ</span><h2 data-t="whatHappened">چی لە ڕێگا ڕوویدا؟</h2></div><button class="close-button" type="button" id="closeDialog" aria-label="Close">×</button></header>
+      <label class="field-label" for="reportType" data-t="typeLabel">جۆری کێشە</label>
+      <select id="reportType" required><option value="pothole" data-t="pothole">چاڵی ڕێگا</option><option value="crash" data-t="crash">ڕووداوی هاتووچۆ</option><option value="closure" data-t="closure">داخستنی ڕێگا</option><option value="flood" data-t="flood">ئاوی لافاو</option><option value="debris" data-t="debris">پیسی و خاشاک</option><option value="other" data-t="other">کێشەی تر</option></select>
+      <label class="field-label" for="reportDetails" data-t="detailsLabel">وردەکاری (ئارەزوومەندانە)</label>
+      <textarea id="reportDetails" rows="2" maxlength="400" data-placeholder="detailsPlaceholder" placeholder="بە کورتی باس بکە..."></textarea>
+      <div class="attachment-grid"><label class="attachment-card"><span class="attach-icon photo">▧</span><span><b data-t="addPhoto">وێنە زیاد بکە</b><small data-t="photoHint">وێنە بگرە یان لە ئەلبوم هەڵیبژێرە</small></span><input id="photoFile" type="file" accept="image/*" capture="environment"></label><label class="attachment-card"><span class="attach-icon video">▶</span><span><b data-t="addVideo">ڤیدیۆ زیاد بکە</b><small data-t="videoHint">مۆڵەتەکان بە بەکارهێنەری ئامێرەکە دەدرێت</small></span><input id="videoFile" type="file" accept="video/*" capture="environment"></label></div>
+      <div class="media-preview" id="mediaPreview" hidden></div>
+      <div class="location-row"><span class="pin-icon">⌖</span><div><b data-t="reportLocation">شوێنی ئاگادارکردنەوە</b><small id="reportCoordinates" data-t="locationNotSet">موقع خۆت دیاری بکە</small></div><button type="button" id="getReportLocation" class="text-button" data-t="useMyLocation">شوێنی من</button></div>
+      <p class="safety-tip" data-t="safetyTip">ئەگەر خۆت شۆفێریت، پێش وێنەگرتن لە شوێنێکی سەلامەت بوەستە.</p>
+      <p class="dialog-status" id="dialogStatus" role="status" aria-live="polite"></p>
+      <button class="submit-report" id="saveReport" type="submit" data-t="saveReport">پاشەکەوتکردنی ئاگادارکردنەوە</button>
+      <p class="privacy-note" data-t="privacyNote">ئەم وەشانە ئاگادارکردنەوەکە لەم ئامێرەدا پاشەکەوت دەکات؛ هێشتا بۆ بەڕێوەبەر یان دەزگای حکومی نانێردرێت.</p>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="./app.js"></script>
+</body>
+</html>

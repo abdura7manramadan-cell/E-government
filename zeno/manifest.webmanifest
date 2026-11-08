@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Zeno Drive",
+  "short_name": "Zeno",
+  "description": "A community road map and reporting app for Kurdistan and Iraq.",
+  "lang": "ku",
+  "dir": "auto",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0e1822",
+  "theme_color": "#101b25",
+  "categories": ["navigation", "travel"],
+  "icons": [
+    { "src": "./icons/zeno-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icons/zeno-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
