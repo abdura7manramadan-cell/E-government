@@ -64,5 +64,5 @@ function wire(){
 }
 
 setLanguage(localStorage.getItem('zeno-language')||'ku');wire();initMap();renderReports();
-if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{});
 if(new URLSearchParams(location.search).get('sent')==='1'){toast(tr('sentSuccess'));history.replaceState({},'',location.pathname)}
