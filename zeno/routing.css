@@ -1,0 +1,7 @@
+.turn-card{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid #ffffff12;border-radius:14px;background:linear-gradient(120deg,#172c35,#14232d)}
+.turn-symbol{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#edfaf4;color:#159976;font-size:25px}
+.turn-card>div{display:grid;gap:2px}.turn-card small{font-size:8px;color:#94a5a8}.turn-card b{font-size:11px}.turn-card span:last-child{font-size:8px;color:#92a2a5}
+.route-note{color:#cbb682!important}
+.start-button:disabled{opacity:.65;cursor:wait}
+.leaflet-routing-line{filter:drop-shadow(0 1px 3px #102b24)}
+@media(max-width:760px){.turn-card{padding:8px;gap:8px}.turn-symbol{width:32px;height:32px}.turn-card b{font-size:9px}.turn-card small,.turn-card span:last-child{font-size:7px}}

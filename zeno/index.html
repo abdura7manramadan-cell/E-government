@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./polish.css">
+  <link rel="stylesheet" href="./routing.css">
 </head>
 <body>
   <main class="app-shell">
@@ -39,7 +40,7 @@
         <div class="map-quick-filters"><button class="filter active" data-filter="traffic"><span>🚦</span><span data-t="traffic">هاتووچۆ</span></button><button class="filter active" data-filter="hazard"><span>⚠️</span><span data-t="hazards">مەترسییەکان</span></button></div>
         <button class="locate-button" id="locateMe" type="button" aria-label="My location">⌖</button>
         <button class="report-fab" id="openReport" type="button"><span>＋</span><span data-t="report">ئاگادارکردنەوە</span></button>
-        <div class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors</div>
+        <div class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors · Route: <a href="https://project-osrm.org/" target="_blank" rel="noreferrer">OSRM</a> demo</div>
       </div>
 
       <aside class="info-panel">
@@ -47,8 +48,9 @@
           <div class="section-heading"><span data-t="destination">شوێنی مەبەست</span><span class="pill muted" data-t="demo">تاقیکاری</span></div>
           <div class="destination"><span class="destination-icon">⌖</span><div><b id="destinationName" data-t="cityCenter">ناوەندی شار</b><small id="destinationHint" data-t="chooseDestination">نەخشەکە بکە بۆ دیاریکردنی مەبەست</small></div></div>
           <div class="route-info"><div><b id="routeDistance">—</b><small data-t="distance">دووری</small></div><div><b id="routeEta">—</b><small data-t="arrival">کاتی گەیشتن</small></div><button id="clearRoute" type="button" data-t="clear">سڕینەوە</button></div>
-          <button class="start-button" id="startNavigation" type="button" data-t="start">دەستپێکردنی ڕێگا</button>
+          <button class="start-button" id="startNavigation" type="button" data-t="start">هەژمارکردنی ڕێگا</button>
         </section>
+        <section class="turn-card" id="turnCard" hidden><span class="turn-symbol">↰</span><div><small id="turnDistance">—</small><b id="turnInstruction">—</b><span id="turnStreet">—</span></div></section>
         <section class="road-card">
           <div class="section-heading"><b data-t="nearbyReports">ئاگادارکردنەوەی نزیک</b><button class="text-button" id="refreshReports" type="button" data-t="refresh">نوێکردنەوە</button></div>
           <div id="reportList" class="report-list"><div class="empty-state"><span>✦</span><p data-t="noReports">ئاگادارکردنەوەکانت لێرە دەردەکەون</p></div></div>
