@@ -1,5 +1,13 @@
 const translations = {
     ar: {
+        quickActionsTitle: "شنو تحتاج اليوم؟",
+        reportIssue: "قدّم بلاغاً",
+        reportIssueDesc: "صوّر المشكلة، حدّد الجهة والموقع، وأرسل تفاصيل البلاغ.",
+        readyTransaction: "جهّز معاملتك",
+        readyTransactionDesc: "اختر الجهة والخدمة واحصل على قائمة استعداد شخصية.",
+        findAgency: "ابحث عن جهة",
+        findAgencyDesc: "اعثر على الوزارة أو الدائرة المناسبة لاحتياجك.",
+        startNow: "ابدأ الآن ←",
         siteName: "بوابة حكومة إقليم كوردستان",
         home: "الرئيسية",
         services: "الخدمات الإلكترونية",
@@ -116,6 +124,14 @@ const translations = {
     },
 
     ku: {
+        quickActionsTitle: "ئەمڕۆ پێویستیت بە چییە؟",
+        reportIssue: "سکاڵا بنێرە",
+        reportIssueDesc: "کێشەکە وێنە بگرە، لایەن و شوێن دیاری بکە و وردەکارییەکان بنێرە.",
+        readyTransaction: "مامەڵەکەت ئامادە بکە",
+        readyTransactionDesc: "لایەن و خزمەتگوزاری هەڵبژێرە و لیستی تایبەت بەخۆت وەربگرە.",
+        findAgency: "بەدوای لایەنێکدا بگەڕێ",
+        findAgencyDesc: "وەزارەت یان فەرمانگەی گونجاو بۆ پێویستییەکەت بدۆزەوە.",
+        startNow: "ئێستا دەست پێ بکە ←",
         siteName: "دەروازەی حکومەتی هەرێمی کوردستان",
         home: "سەرەکی",
         services: "خزمەتگوزارییە ئەلیکترۆنییەکان",
@@ -232,6 +248,14 @@ const translations = {
     },
 
     en: {
+        quickActionsTitle: "What do you need today?",
+        reportIssue: "Submit a report",
+        reportIssueDesc: "Photograph the issue, choose the location and institution, and send the details.",
+        readyTransaction: "Prepare your transaction",
+        readyTransactionDesc: "Choose an institution and service to get a personal preparation checklist.",
+        findAgency: "Find an institution",
+        findAgencyDesc: "Find the ministry or department that fits your need.",
+        startNow: "Get started →",
         siteName: "Kurdistan Regional Government Portal",
         home: "Home",
         services: "Electronic Services",
