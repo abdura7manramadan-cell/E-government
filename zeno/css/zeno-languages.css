@@ -1,0 +1,16 @@
+.language-switch{display:flex;align-items:center;padding:3px;border-radius:9px;background:#08131d;border:1px solid #ffffff12;gap:2px}
+.language-switch button{height:24px;min-width:29px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:#8d9da3;font:700 8px Arial,sans-serif}
+.language-switch button.active{color:#09251d;background:#5cd8ae;box-shadow:0 2px 8px #39bf9655}
+:dir(ltr) .side-panel{direction:ltr}
+:dir(ltr) .head-location{margin-right:0;margin-left:36px;padding-right:0;padding-left:24px;border-right:0;border-left:1px solid #ffffff18}
+:dir(ltr) .head-meta{margin-right:0;margin-left:auto}
+:dir(ltr) .destination-name{text-align:left}
+:dir(ltr) .route-stats div{border-left:0;border-right:1px solid #ffffff10}
+:dir(ltr) .route-stats div:first-child{border:0}
+:dir(ltr) .route-button span{display:inline-block;transform:rotate(180deg)}
+:dir(ltr) .next-turn>div:nth-child(2),:dir(ltr) .road-status,:dir(ltr) .quick-report{text-align:left}
+:dir(ltr) .status-arrow,:dir(ltr) .quick-report>button{margin-left:auto;margin-right:0}
+:dir(ltr) .turn-distance{margin-left:auto;margin-right:0}
+:dir(ltr) .panel-footer{direction:ltr}
+@media(max-width:900px){:dir(ltr) .head-location{margin-left:18px;padding-left:15px}}
+@media(max-width:650px){.language-switch button{min-width:25px;padding:0 4px}:dir(ltr) .head-location{margin-left:12px;padding-left:10px}}
