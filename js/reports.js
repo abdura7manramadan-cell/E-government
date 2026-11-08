@@ -40,45 +40,7 @@
 
     if (form && result) {
         form.addEventListener("submit", function (event) {
-            event.preventDefault();
             if (!form.reportValidity()) return;
-
-            const data = new FormData(form);
-            const reference = "KRG-" + new Date().getFullYear() + "-" + Math.floor(100000 + Math.random() * 900000);
-            const report = {
-                reference,
-                type: data.get("type"),
-                city: data.get("city"),
-                department: data.get("department"),
-                description: data.get("description").trim(),
-                photo: photoData,
-                createdAt: new Date().toISOString(),
-                status: localizedMessages().status
-            };
-
-            try {
-                const reports = readReports();
-                reports.push(report);
-                localStorage.setItem(storageKey, JSON.stringify(reports));
-                result.replaceChildren();
-                const saved = document.createElement("strong"); saved.textContent = localizedMessages().saved; result.append(saved, document.createElement("br"));
-                result.append(document.createTextNode(localizedMessages().tracking + " "));
-                const code = document.createElement("b"); code.textContent = reference; result.append(code, document.createElement("br"));
-                result.append(document.createTextNode(report.status));
-                if (report.photo) {
-                    const image = document.createElement("img");
-                    image.src = report.photo; image.alt = "صورة مرفقة بالبلاغ";
-                    image.style.cssText = "display:block;max-width:100%;max-height:240px;border-radius:12px;margin-top:12px";
-                    result.append(image);
-                }
-                result.hidden = false;
-                form.reset();
-                photoData = "";
-                if (photoPreview) { photoPreview.src = ""; photoPreview.hidden = true; }
-            } catch (_) {
-                result.textContent = localizedMessages().failed;
-                result.hidden = false;
-            }
         });
     }
 
