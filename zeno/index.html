@@ -85,13 +85,13 @@
       <p class="confirm-place" id="confirmPlace">—</p>
       <div class="confirm-stats"><div><b id="confirmDistance">—</b><small data-t="distance">دووری ڕێگا</small></div><div><b id="confirmEta">—</b><small data-t="arrival">ماوەی گەشت</small></div></div>
       <section class="route-preview-section"><b data-t="knownIssues">بلاغات معروفة على المسار</b><p id="routeIssueSummary">—</p></section>
-      <ul class="route-data-limits"><li data-t="trafficFeedUnavailable">معلومات الازدحام الحي غير متوفرة.</li><li data-t="signalsFeedUnavailable">عدد إشارات المرور غير متوفر.</li><li data-t="camerasFeedUnavailable">لا توجد بيانات موثوقة عن كاميرات السرعة؛ التزم بالسرعة المحددة.</li></ul>
+      <ul class="route-data-limits"><li data-t="trafficFeedUnavailable">معلومات الازدحام الحي غير متوفرة.</li><li id="routeSignalsInfo" data-t="signalsLoading">جارٍ فحص بيانات الإشارات المعروفة…</li><li id="routeCamerasInfo" data-t="camerasLoading">جارٍ فحص بيانات الكاميرات الثابتة الموثقة…</li><li data-t="cameraSafetyNote">قد تكون البيانات ناقصة؛ التزم دائماً بالسرعة المحددة.</li><li id="mapDataAttribution" data-t="mapDataAttribution">بيانات المرافق من خريطة OpenStreetMap وقد تكون غير مكتملة.</li></ul>
       <div class="confirm-actions"><button id="cancelDestination" class="cancel-route" type="button" data-t="cancelDestination">رجوع</button><button id="confirmDestination" class="submit-report" type="button" data-t="confirmDestination">نعم، ابدأ الملاحة</button></div>
     </div>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="./app-v7.js"></script>
+  <script src="./app-v8.js"></script>
 </body>
 </html>
