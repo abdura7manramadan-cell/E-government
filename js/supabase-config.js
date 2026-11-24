@@ -1,8 +1,8 @@
 // Public client configuration only. Never put a Supabase secret/service_role key here.
 window.CITIZEN_DB_CONFIG = {
-  url: '', // Example: https://your-project.supabase.co
-  publishableKey: '', // Supabase publishable key (or legacy anon key)
+  url: 'https://synqfolawxwocojbgauv.supabase.co',
+  publishableKey: 'sb_publishable_E_HSyDHX7Y_tJFS7w_qGMg_LO-dkgd2',
   reportsTable: 'citizen_reports',
   attachmentsBucket: 'citizen-report-attachments',
-  aiFunctionUrl: '' // Optional override; defaults to /functions/v1/citizen-ai
+  aiFunctionUrl: ''
 };
