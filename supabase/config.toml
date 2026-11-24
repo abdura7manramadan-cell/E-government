@@ -1,0 +1,4 @@
+[functions.citizen-ai]
+# This endpoint is public but accepts only predefined action/category identifiers.
+# It verifies the allowed site origin and applies a per-IP database rate limit.
+verify_jwt = false
