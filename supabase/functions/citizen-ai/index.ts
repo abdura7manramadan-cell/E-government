@@ -48,8 +48,15 @@ Deno.serve(async (request) => {
 
   const openAiKey = Deno.env.get('OPENAI_API_KEY');
   const supabaseUrl = Deno.env.get('SUPABASE_URL');
-  const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  if (!openAiKey || !supabaseUrl || !serviceRoleKey) return json(503, { error: 'assistant_not_configured' });
+  const configuredSecretKeys = Deno.env.get('SUPABASE_SECRET_KEYS');
+  let supabaseSecretKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
+  if (!supabaseSecretKey && configuredSecretKeys) {
+    try {
+      const keys = JSON.parse(configuredSecretKeys) as Record<string, unknown>;
+      supabaseSecretKey = typeof keys.default === 'string' ? keys.default : '';
+    } catch { /* Leave the function disabled until valid project keys are available. */ }
+  }
+  if (!openAiKey || !supabaseUrl || !supabaseSecretKey) return json(503, { error: 'assistant_not_configured' });
 
   let input: Record<string, unknown>;
   try {
@@ -88,7 +95,7 @@ Deno.serve(async (request) => {
   const ipHash = Array.from(new Uint8Array(ipDigest), (byte) => byte.toString(16).padStart(2, '0')).join('');
   const rateResponse = await fetch(`${supabaseUrl}/rest/v1/rpc/claim_citizen_ai_slot`, {
     method: 'POST',
-    headers: { apikey: serviceRoleKey, Authorization: `Bearer ${serviceRoleKey}`, 'Content-Type': 'application/json' },
+    headers: { apikey: supabaseSecretKey, Authorization: `Bearer ${supabaseSecretKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ p_ip_hash: ipHash }),
   });
   if (!rateResponse.ok) return json(503, { error: 'rate_limit_unavailable' });
