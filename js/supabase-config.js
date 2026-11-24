@@ -3,5 +3,6 @@ window.CITIZEN_DB_CONFIG = {
   url: '', // Example: https://your-project.supabase.co
   publishableKey: '', // Supabase publishable key (or legacy anon key)
   reportsTable: 'citizen_reports',
-  attachmentsBucket: 'citizen-report-attachments'
+  attachmentsBucket: 'citizen-report-attachments',
+  aiFunctionUrl: '' // Optional override; defaults to /functions/v1/citizen-ai
 };
