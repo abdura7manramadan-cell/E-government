@@ -1,5 +1,5 @@
-const CACHE='citizen-portal-v1';
-const SHELL=['./','./index.html','./css/portal.css','./js/portal.js','./js/supabase-config.js','./manifest.webmanifest','./images/citizen-mark.svg'];
+const CACHE='citizen-portal-v3';
+const SHELL=['./','./index.html','./admin.html','./css/portal.css','./css/ai-assistant.css','./js/portal.js','./js/admin.js','./js/supabase-config.js','./manifest.webmanifest','./images/citizen-mark.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('citizen-portal-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
@@ -8,8 +8,8 @@ self.addEventListener('fetch',event=>{
   const url=new URL(request.url);
   if(url.origin!==self.location.origin)return;
   if(request.mode==='navigate'){
-    event.respondWith(fetch(request).then(response=>{if(response.ok)caches.open(CACHE).then(cache=>cache.put('./index.html',response.clone()));return response}).catch(()=>caches.match('./index.html')));
+    event.respondWith(fetch(request).then(response=>{if(response.ok)caches.open(CACHE).then(cache=>cache.put(request,response.clone()));return response}).catch(()=>caches.match(request,{ignoreSearch:true}).then(cached=>cached||caches.match('./index.html'))));
     return;
   }
-  event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{if(response.ok)caches.open(CACHE).then(cache=>cache.put(request,response.clone()));return response})));
+  event.respondWith(caches.match(request,{ignoreSearch:true}).then(cached=>cached||fetch(request).then(response=>{if(response.ok)caches.open(CACHE).then(cache=>cache.put(request,response.clone()));return response})));
 });
