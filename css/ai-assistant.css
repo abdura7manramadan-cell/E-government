@@ -1,0 +1,8 @@
+.ai-assistant-toggle{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:.87rem;font-weight:600}
+.ai-quick-actions{display:grid;gap:8px;padding:0 15px 12px}
+.ai-quick-actions button{padding:10px 12px;border:1px solid #dce4dd;border-radius:11px;background:#f8faf7;color:#294c4b;text-align:start;font:600 .82rem 'IBM Plex Sans Arabic',sans-serif;cursor:pointer}
+.ai-quick-actions button:hover{border-color:#8da99b;background:#f0f5f0}
+.ai-quick-actions button:disabled{opacity:.55;cursor:wait}
+.ai-disclosure{margin:0;padding:0 14px 13px;color:#79877f;font-size:.69rem;line-height:1.6}
+.ai-draft-result p{white-space:pre-wrap;line-height:1.8}
+@media(max-width:650px){.ai-assistant-toggle{font-size:.78rem}}
