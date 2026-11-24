@@ -3,6 +3,11 @@
 .ai-quick-actions button{padding:10px 12px;border:1px solid #dce4dd;border-radius:11px;background:#f8faf7;color:#294c4b;text-align:start;font:600 .82rem 'IBM Plex Sans Arabic',sans-serif;cursor:pointer}
 .ai-quick-actions button:hover{border-color:#8da99b;background:#f0f5f0}
 .ai-quick-actions button:disabled{opacity:.55;cursor:wait}
+.ai-question-form{display:flex;gap:8px;padding:0 15px 12px}
+.ai-question-form input{min-width:0;flex:1;padding:11px 12px;border:1px solid #dce4dd;border-radius:11px;background:#fff;color:#203a38;font:500 .84rem 'IBM Plex Sans Arabic',sans-serif;outline:none}
+.ai-question-form input:focus{border-color:#789889;box-shadow:0 0 0 3px #78988922}
+.ai-question-form button{padding:0 15px;border:0;border-radius:11px;background:#234c49;color:#fff;font:600 .82rem 'IBM Plex Sans Arabic',sans-serif;cursor:pointer}
+.ai-message.user-message{margin-inline-start:18%;background:#e8f0e9;color:#233e3a}
 .ai-disclosure{margin:0;padding:0 14px 13px;color:#79877f;font-size:.69rem;line-height:1.6}
 .ai-draft-result p{white-space:pre-wrap;line-height:1.8}
 @media(max-width:650px){.ai-assistant-toggle{font-size:.78rem}}
